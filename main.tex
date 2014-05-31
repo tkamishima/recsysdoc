@@ -1,0 +1,123 @@
+%!TEX encoding = UTF-8 Unicode
+\documentclass[11pt,a4paper,papersize,oneside]{jsbook}
+
+\usepackage[OT2,T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{newtxtext,newtxmath}
+\usepackage[dvipdfmx]{graphicx}
+\graphicspath{{Fig/}}
+\usepackage{url}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper} % 日本語のhyperref
+\usepackage{makeidx}\makeindex  % allows for indexgeneration
+
+\usepackage{pifont}
+\usepackage{array,booktabs}
+\usepackage{setspace}
+
+% PDF meta information and bookmarks
+\hypersetup{
+bookmarks=true,         % show bookmarks bar?
+bookmarksnumbered=true,
+bookmarkstype=toc,
+%unicode=true,          % non-Latin characters in Acrobat’s bookmarks
+pdftoolbar=true,        % show Acrobat’s toolbar?
+pdfmenubar=true,        % show Acrobat’s menu?
+pdffitwindow=false,     % window fit to page when opened
+pdftitle={推薦システムのアルゴリズム},    % title
+pdfauthor={神嶌 敏弘},     % author
+pdfsubject={}, % subject
+pdfkeywords={推薦システム;recommender system;協調フィルタリング;collaborative filtering}, % list of keywords
+pdfnewwindow=true,      % links in new window
+%setpagesize=false, % setting paper size
+}
+
+% local macro definitions
+\usepackage{mathsymbols}
+
+% set pagesize: A4paper, margin=3cm
+%\setlength{\topmargin}{4.6truemm}
+%\setlength{\headheight}{1zh}
+%\setlength{\headsep}{1zh}
+%\setlength{\textheight}{\paperheight}\addtolength{\textheight}{-90truemm}\addtolength{\textheight}{-2zh}
+%\setlength{\footskip}{10truemm}
+\setlength{\oddsidemargin}{4.6truemm}
+\setlength{\evensidemargin}{\oddsidemargin}
+\setlength{\textwidth}{\paperwidth}\addtolength{\textwidth}{-60truemm}
+\setlength{\fullwidth}{\textwidth}
+
+%%%% more linebreaks in equations %%%%
+
+\binoppenalty=0
+\relpenalty=0
+% \mathcode`\,="202C      % "," is considered as a binary operator
+
+%%%%% condense floats %%%%%
+
+% \def\topfraction{0.99}
+% \def\bottomfraction{0.01}
+% \def\textfraction{0.01}
+% \def\floatpagefraction{0.99}
+% \def\dbltopfraction{0.99}
+% \def\dblfloatpagefraction{0.99}
+
+%%%%% other settings %%%%%
+\renewcommand{\seename}{\unskip\ \ding{"0B}} % change ``see also'' in indexes
+
+%%%%% title, author, and release %%%%%
+
+\title{推薦システムのアルゴリズム}
+\author{神嶌 敏弘 $\langle$\url{http://www.kamishima.net/}$\rangle$}
+\date{Release: \input{version}}
+
+\begin{document}
+
+% ===== Front Matter =====
+\frontmatter
+
+% --- Title ---
+\maketitle
+
+% --- Preface & Notation---
+\onehalfspacing
+
+%\include{intro}
+\input{notation}
+
+% --- Table of Contents ---
+\tableofcontents
+
+% ===== Main Matter =====
+\mainmatter
+
+% ---- Main Content ----
+\part{推薦システムの基本}
+\chapter{はじめに}
+\section{推薦システム}
+
+「\textbf{推薦システム (recommender system)}」とは，利用者にとって
+有用と思われる対象，情報，または商品などを選び出し，それらを利用者
+の目的に合わせた形で提示するシステムである．
+\index{推薦システム}
+
+\include{nocite}
+
+% ===== Back Matter =====
+\backmatter
+\singlespacing
+\pagestyle{empty}
+
+% ---- Acknowledgements ----
+%\medskip
+%\noindent\small\textbf{謝辞}:\ 
+%みんなありがとう
+
+% ---- Bibliography ----
+\bibliographystyle{jsai}
+\bibliography{ebib,epublist,emisc,jbib,jpublist,jmisc}
+
+% --- Indexes ---
+\printindex
+
+\end{document}
