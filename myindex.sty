@@ -1,0 +1,16 @@
+%!TEX root =  main.tex
+%!TEX encoding = UTF-8 Unicode
+\ProvidesPackage{myindex}[2014/05/31 v1.0 Japanese-English Index]
+\RequirePackage{pifont}
+
+% change ``see also'' in indexes
+\renewcommand{\seename}{\ding{"DC}\nolinebreak}
+
+% width of indentation of indexes
+\renewcommand{\@idxitem}{\par\hangindent=1zw}
+
+% macros for indexes
+\newcommand{\indexmain}[1]{\index{#1|textbf}}
+
+\newcommand{\term}[2]{\textbf{#1} (#2) \index{#1}\index{#2}}
+\newcommand{\termmain}[2]{\textbf{#1} (#2) \indexmain{#1}\indexmain{#2}}
