@@ -1,0 +1,29 @@
+%!TEX root =  main.tex
+%!TEX encoding = UTF-8 Unicode
+
+\chapter*{まえがき}
+\label{sec:preface}
+
+本稿は推薦システムについてまとめたものである．
+
+人工知能学会誌2007年11月号~\cite{jpublist:076}，2008年1月号~\cite{jpublist:081}，および2008年3月号~\cite{jpublist:083}の3回に渡って連載した解説記事「推薦システムのアルゴリズム(1)〜(3)」に対し，誤りの訂正や，新しい内容の追加などの更新を行ったものである．
+
+本稿のソースファイルは \texttt{GitHub} にて公開している．
+\begin{quote}
+\url{https://github.com/tkamishima/recsysdoc}
+\end{quote}
+TYPOや記述の誤りなどのバグリポートは，\texttt{GitHub} の rull request か，issues を使って連絡されたい．
+なお，事情によりすぐには対処できない場合があるので，予めご了解いただきたい．
+
+\section*{本書の構成}
+\label{sec:preface-organization}
+
+本稿の構成は以下のとおりである．
+\ref{sec:rsysgoal}と\ref{sec:design}では推薦システムの分類と評価指標について，
+\ref{sec:cfscheme}では全体の三つの実行過程について，
+\ref{sec:getpref}節では最初の段階である「データの入力」，
+\ref{sec:cfcbf}〜\ref{sec:hybrid}では次の「嗜好の予測」段階，そし
+て\ref{sec:present}では最後の「推薦の提示」段階を紹介する．
+\ref{sec:other}ではその他の問題や視点について，
+\ref{sec:conclusion}では参考資料を紹介し，
+最後に\ref{sec:openproblem}では推薦システムの今後の展開について述べる．
