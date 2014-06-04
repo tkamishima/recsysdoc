@@ -23,9 +23,11 @@
 * <http://www.kamishima.net/asset/jpublist.bib>
 * <http://www.kamishima.net/asset/mathsymbols.sty>
 
+さらに人工知能学会のスタイルファイルに含まれる `jsai.bst` を `usf-8` に変換したものも必要です．
+
 UTF-8 で符号化した日本語ファイルをコンパイルできる pLaTeX 環境にて，以下のコマンドでコンパイルできます::
 
-    git --no-pager log -1 --pretty='%ai %h' > version.tex
+    git --no-pager log -1 --pretty='%ai; %h' > version.tex
     platex main
     pbibtex main
     mendex -r -c -g -p any -s main.ist -d main.dic main.idx
