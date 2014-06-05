@@ -17,6 +17,7 @@
 \usepackage[dvipdfmx]{pxjahyper} % 日本語のhyperref
 \usepackage{makeidx}\makeindex  % allows for indexgeneration
 
+\usepackage[bold]{otf}
 \usepackage{pifont}
 \usepackage{array,booktabs}
 \usepackage{setspace}
@@ -71,8 +72,8 @@ pdfnewwindow=true,      % links in new window
 
 %%%%% title, author, and release %%%%%
 
-\title{\Huge\textbf{推薦システムのアルゴリズム}}
-\author{\textbf{神嶌 敏弘}\quad$\langle$\url{http://www.kamishima.net/}$\rangle$}
+\title{\Huge\sffamily\bfseries 推薦システムのアルゴリズム}
+\author{\Large\textbf{神嶌 敏弘} \quad$\langle\,$\url{http://www.kamishima.net/}$\,\rangle$}
 \date{Release: \input{version}}
 
 \begin{document}
@@ -114,6 +115,7 @@ pdfnewwindow=true,      % links in new window
 \label{part:algorithm}
 \include{ch-cf}
 \include{ch-memorybase}
+\include{ch-collaborative}
 
 \include{nocite}
 
@@ -131,6 +133,7 @@ pdfnewwindow=true,      % links in new window
 \bibliography{ebib,epublist,emisc,jbib,jpublist,jmisc}
 
 % --- Indexes ---
+\pagestyle{empty}
 \printindex
 
 \end{document}
