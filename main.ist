@@ -10,6 +10,7 @@ delim_1   "\\hfill "
 delim_2   "\\hfill "
 %
 % mendex
+character_order "SJE"
 lethead_prefix
 "\\hbox to \\linewidth{\\gtfamily\\bfseries "
 lethead_suffix
