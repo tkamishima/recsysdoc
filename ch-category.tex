@@ -21,33 +21,32 @@
 
 \begin{figure}
 \centering
-\begin{minipage}{0.45\fullwidth}
+\begin{subfigure}[b]{0.4\linewidth}
 \centering
-\includegraphics[width=\textwidth]{example1.png}\\
-(a)~非個人化 (iTunes Store)
-\end{minipage}
-\hspace{0.02\fullwidth}
-\begin{minipage}{0.45\fullwidth}
+\includegraphics[width=\linewidth]{example1.png}
+\caption{非個人化 (iTunes Store)}\label{fig:plevel:a}
+\end{subfigure}%
+\hspace{0.08\linewidth}%
+\begin{subfigure}[b]{0.4\linewidth}
 \centering
-\includegraphics[width=\textwidth]{example2.png}\\
-(b)~非個人化 (iTunes Store)
-\end{minipage}
-\medskip\\
-\begin{minipage}[b]{0.45\fullwidth}
+\includegraphics[width=\linewidth]{example2.png}
+\caption{非個人化 (iTunes Store)}\label{fig:plevel:b}
+\end{subfigure}\\
+\medskip%
+\begin{subfigure}[b]{0.4\linewidth}
 \centering
-\includegraphics[width=\textwidth]{example56.png}\\
-(c)~一時的個人化 (Amazon.co.jp)
-\end{minipage}
-\hspace{0.02\fullwidth}
-\begin{minipage}[b]{0.45\fullwidth}
+\includegraphics[width=\linewidth]{example56.png}
+\caption{一時的個人化 (Amazon.co.jp)}\label{fig:plevel:c}
+\end{subfigure}%
+\hspace{0.08\linewidth}%
+\begin{subfigure}[b]{0.4\linewidth}
 \centering
-\includegraphics[width=\textwidth]{example4.png}\\
-(d)~永続的個人化 (Amazon.co.jp)
-\end{minipage}
-\bigskip\\
+\includegraphics[width=\linewidth]{example4.png}
+\caption{永続的個人化 (Amazon.co.jp)}\label{fig:plevel:d}
+\end{subfigure}\\
 \caption{個人化の度合いの異なる推薦の例}
 \label{fig:plevel}
-{\footnotesize 図(a)，(b)，(d) は2007/07/26日に，図(c)は2007/08/04日にスクリーンショットを取得した．}
+{\footnotesize\subref{fig:plevel:a}，\subref{fig:plevel:b}，\subref{fig:plevel:d}は2007/07/26日に，\subref{fig:plevel:c}は2007/08/04日にスクリーンショットを取得した．}
 \end{figure}
 
 \begin{description}[style=nextline]
@@ -55,18 +54,18 @@
 全ての利用者について，全く同じ推薦をする場合である．
 例えば，編集者による推薦や，売り上げ順位リストなどである．
 推薦システムというときは個人化かつ自動化されたものを想定するかもしれないが，こうしたものも広義には含める．
-非個人化の推薦の例を図\ref{fig:plevel}(a)と(b)に示す．
-図\ref{fig:plevel}(a)中の，(1)は店舗の編集者が手作業で選んだもの，(2)は予約や売り上げの順位リストである．
-システム側だけでなく，図\ref{fig:plevel}(b)のように，他の利用者が手作業で作成する推薦リストもある．
+非個人化の推薦の例を図\ref{fig:plevel:a}と\subref{fig:plevel:b}に示す．
+図\ref{fig:plevel:a}中の，(1)は店舗の編集者が手作業で選んだもの，(2)は予約や売り上げの順位リストである．
+システム側だけでなく，図\ref{fig:plevel:b}のように，他の利用者が手作業で作成する推薦リストもある．
 \item[\term{一時的個人化}{ephemeral personalization}]
 システムを利用する一つのセッションで同じ入力や振る舞いをした利用者には，同じ推薦をする場合である．
-一時的個人化の推薦の例を図\ref{fig:plevel}(c)に示す．
+一時的個人化の推薦の例を図\ref{fig:plevel:c}に示す．
 この例では，利用者がある本を閲覧するという行動をシステムに対してしたとき，その本に関連する情報を示している．
 図中の，(1)はこの本と関連が深い本を推薦し，(2)には，書誌情報や売り上げ順位など，(3)では他の利用者の評価やコメントなど，この本についての関連情報を提示している．
 \item[\term{永続的個人化}{persistent personalization}]
 たとえ同じ入力や行動をシステムにしている利用者でも，利用者の個人情報や過去の利用履歴に応じて異なる推薦をする場合である．
 例えば，過去の購入・利用履歴に基づいて推薦したり，年齢に応じて推薦するアイテムを変えたりする．
-永続的個人化の推薦の例である図\ref{fig:plevel}(d)では，この利用者の過去の商品への評価に基づいて，関心があるであろう本を予測し，順位付けして提示している．
+永続的個人化の推薦の例である図\ref{fig:plevel:d}では，この利用者の過去の商品への評価に基づいて，関心があるであろう本を予測し，順位付けして提示している．
 \end{description}
 
 \section{推薦システムの運用目的の分類}
@@ -80,7 +79,7 @@
 \item[概要推薦 (broad recommendation)]
 これは，全体の統計情報や運用者側の編集者を使う場合である．
 全体の統計情報とは「今週の売り上げランキング」や「個々の商品の売り上げ順位」といったもので，編集者による推薦には「評論家が推薦する映画」や「特売品リスト」などがある．
-図\ref{fig:plevel}(a)はこうした概要推薦の例である．
+図\ref{fig:plevel:a}はこうした概要推薦の例である．
 こうした概要推薦は，システムを利用し始めたばかりか，ごくまれにしか利用しないような利用者を対象とする．
 これらの利用者が，自身の要求との関連性を見いだして，システムの利用を続けてもらえるように，大まかな情報を提供するのが目的である．
 よって，積極的に探さなくても見えるように，システムにアクセスしたとき最初に見える場所に配置するべき推薦である．
@@ -88,7 +87,7 @@
 \item[利用者評価 (user comments and rating)]
 これは，運用側が用意したシステム上で，利用者間での推薦をする場合である．
 例えば，読者の批評文や★の数で示した評価レートをつけられるようにし，それらを他の利用者が参照したり，平均評価値などの統計情報を見たりできるようにする．
-図\ref{fig:plevel}(b)のような他の利用者による推薦リストや，図\ref{fig:plevel}(c)の(3)のように他の利用者による評価やコメントなどが
+図\ref{fig:plevel:b}のような他の利用者による推薦リストや，図\ref{fig:plevel:c}の(3)のように他の利用者による評価やコメントなどが
 この種の推薦の例である．\par
 一般に，運用側のシステムが第三者的な立場で推薦しているとは，利用者にはあまり思われない．
 それに対し，他の利用者の方がずっと信用され，その推薦も受け入れられやすい．
@@ -102,11 +101,11 @@
 \item[関連アイテム推薦 (item-associated recommendation)]
 利用者が注目している，例えば，電子商取引サイトで，商品を閲覧しているとか，「買い物かご」にすでに商品を入れている状況を想定する．
 このとき，注目しているアイテムの比較候補（例：他メーカーの同等品）を示して，購入の判断を助けたり，購入の決断を促す場合や，補足的な商品などを提示してcross-selling（例：ハンバーガーにポテトなどの関連品を薦めて同時に購入させる）を促す場合がこの種の推薦である．
-例としては，図\ref{fig:plevel}(c)の(1)のように閲覧中の商品の関連商品を示すものがある．
+例としては，図\ref{fig:plevel:c}の(1)のように閲覧中の商品の関連商品を示すものがある．
 注目している商品の情報だけに基づく一時的個人化も，利用者の過去の行動も考慮する永続的個人化も可能である．
 \item[緊密な個人化 (deep personalization)]
 システムが積極的に利用者の情報を能動的に収集したり，過去の行動の情報を蓄積し，それらに基づいて推薦を行う場合である．
-図\ref{fig:plevel}(d)のような，個人向けの推薦リストなどが，この種の推薦に該当する．
+図\ref{fig:plevel:d}のような，個人向けの推薦リストなどが，この種の推薦に該当する．
 利用者がシステムを利用し続けることで蓄積された情報に基づいて，永続的な個人化が可能になる．すると，より適切な推薦ができるようになり，他のシステムとの差別化につながり，利用者の長期間にわたるロイヤリティ構築に役立つ．
 だが，一方で，最も実装に困難が伴い，コストも要する．
 \end{description}
