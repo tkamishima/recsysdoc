@@ -1,0 +1,145 @@
+%!TEX root =  main.tex
+%!TEX encoding = UTF-8 Unicode
+\chapter{参考資料の紹介}
+\label{chap:reference}
+
+推薦システムについてさらに知るには以下のような資料がある．
+
+\section{代表的な文献，解説記事，および書籍}
+\label{sec:reference-paper}
+
+\subsection{英語}
+
+\begin{description}[style=nextline]
+\singlespacing
+\item[Using Collaborative Filtering to Weave an Information Tapestry (1992)]
+手動での検索ではあるが，初めて ``collaborative filtering'' の概念を提案した\cite{macm:92:01}
+\item[GroupLens: An Open Architecture for Collaborative Filtering of Netnews (1994) と Social Information Filtering: Algorithms for Automating ``Word of Mouth'' (1995)]
+現在の推薦システムに繋がる，最初の自動化した協調フィルタリングによる推薦システムであるGroupLens\cite{cscw:94:01}とRingo\cite{sigchi:95:02}
+\item[Recommender Systems (1997)]
+『推薦システム』という用語を定着させたCommunications of ACMの特集記事\cite{macm:97:01}
+\item[Empirical Analysis of Predictive Algorithms for Collaborative Filtering (1998)]
+初期の推薦アルゴリズムのサーベイと予測精度の比較\cite{uai:98:01}
+\item[E-Commerce Recommendation Applications (2001)]
+電子商取引サイトでの推薦システムの運用について述べた初期の文献ではあるが，ここで指摘された多くの考えは現在においても示唆に富んでいる\cite{dmkd:01:01}
+\item[Evaluating Collaborative Filtering Recommender Systems (2004)]
+推薦システムの評価について「良い推薦とは」ということに深い考察がなされている\cite{jacm:04:01}
+\item[Toward the Next Generation of Recommender Systems: A Survey of the State-of-the-Art and Possible Extensions (2005)]
+推薦システムの基本的なアルゴリズムを俯瞰し，拡張的な推薦タスクに言及\cite{ieeet:05:01}
+\item[Attacks and Remedies in Collaborative Recommendation (2007)]
+サクラ攻撃全般について概要を知るのによい\cite{ieeem:07:07}
+\item[A Survey of Accuracy Evaluation Metrics of Recommendation Tasks (2009)]
+推薦のタスクごとに適切な評価尺度を選ぶべきことを実験的に示した\cite{jmlr:09:01}
+\end{description}
+
+\subsection{日本語}
+
+\begin{description}[style=nextline]
+\singlespacing
+\item[情報推薦・情報フィルタリングのためのユーザプロファイリング技術 (2004)]
+嗜好データの収集全般についてまとめている\cite{jjsai:04:05}
+\item[特集『情報のフィルタリング』(2006)]
+有害情報のフィルタリングと表現の自由など法的観点から，推薦システムの概要まで情報フィルタリングについて幅広く扱う\cite{jmisc:013}
+\item[特集『利用者の好みをとらえ活かす -- 嗜好抽出技術の最前線 --』]
+推薦システム全般を簡潔にまとめた\cite{jipsj:07:01}他いくつかの解説記事を含む\cite{jmisc:014}
+\item[推薦システムのアルゴリズム (2007--2008)]
+本稿はこの拙著に訂正・加筆を行ったものである\cite{jpublist:076,jpublist:081,jpublist:083}
+\item[情報推薦システム入門 --- 理論と実践]
+ややヒューマン・コンピュータ・インターフェースよりの解説\cite{jb:047:00}
+\end{description}
+
+\section{チュートリアル講演}
+\label{sec:reference-tutorial}
+
+国際会議などで行われたチュートリアルを紹介する．
+\begin{itemize}
+\item Grouplens法とインターフェース関係\cite{sigchi:03:01}
+\item 予測精度以外に考慮すべき多様性などの要素\cite{sigchi:06:01,sigchi:06:02}
+\item 推薦システムでユーザインターフェースがはたす役割\cite{misc:029}
+\item 推薦システムの評価\cite{misc:074}
+\item 推薦システムとWebコンテンツ最適化の高度なアルゴリズム\cite{misc:046}
+\item フィルターバブル問題に対するパネル\cite{recsys:11:02}
+\item 推薦と情報検索の多様性\cite{misc:033}
+\item ソーシャル推薦\cite{misc:027}
+\item 利用者インタフェースの評価\cite{misc:030}
+\item 推薦システムのABテストなど実地検証\cite{misc:060}
+\item 推薦システム全般\cite{misc:087}
+\end{itemize}
+
+\section{Webサイト}
+\label{sec:reference-www}
+
+推薦システムに関連するWebサイトを紹介する
+\begin{description}
+\item{ACM Recommender Systems}
+2007年から始まった推薦システムの国際会議\cite{url:023}
+\item[ACM RecSysWiki]
+国際会議Recommender Systemsのコミュニティにより運営されているWiki\cite{url:024}
+\item[GroupLens Research Lab.]
+MovieLensの実験システム，プロジェクトの参考文献，代表的なテストデータなどを参照できる\cite{url:012}
+\item[Netflix Prize]
+オンラインビデオ配信のNetflix社が100万ドルの賞金をかけて2006〜2011年の間に行ったコンペティションで，推薦の予測精度の研究に貢献した\cite{url:022}
+\end{description}
+
+\section{テスト用データ}
+\label{sec:reference-data}
+
+アルゴリズムを検証するために利用できるベンチマークデータを紹介する．
+なお，推薦システム研究の初期によく利用された，映画評価データEachMovieやNetflixのコンペティションのデータなどもあるが，現在は配布が停止されているので，これを利用するのは避けた方がよいだろう．
+
+\begin{description}
+\item[Movielens]
+映画推薦システムMovieLens（最も良く使われているベンチマーク）\\
+\url{http://grouplens.org/datasets/movielens/}
+\item[SUSHI Preference Data Sets]
+著者が収集した寿司に対する嗜好データ，順位法と採点法の両方の評価\\
+\url{http://www.kamishima.net/sushi/}
+\item{Jester}
+アメリカンジョークの推薦，評価スケールが100段階なのが特徴的\\
+\url{http://www.ieor.berkeley.edu/~goldberg/jester-data/}
+\item[BookCrossing]
+書籍コミュニティサイト\\
+\url{http://www2.informatik.uni-freiburg.de/~cziegler/BX/}
+\item[Cuban cigers]
+葉巻販売サイトの商品の閲覧と購入，サイトの閲覧行動\\
+\url{http://isl.ifit.uni-klu.ac.at/}
+\item[Audioscrobbler]
+現在は Last.fm の一部となったAudioscrobblerの音楽データ\\
+\url{http://www-etud.iro.umontreal.ca/~bergstrj/audioscrobbler_data.html}
+\item[Flixster]
+M.~Jammali が収集した，アイテムの評価に加えて，利用者間の信頼関係データを含むソーシャル推薦用\\
+\url{http://www.sfu.ca/~sja25/datasets/}
+\item[BibSonomy]
+論文に関するソーシャルブックマークサイト\\
+\url{http://www.kde.cs.uni-kassel.de/bibsonomy/dumps}
+\item[MovieTweetings]
+Twitterのツイートから映画の評価データを収集したもの\\
+\url{https://github.com/sidooms/MovieTweetings}
+\item[WikiLens]
+タグ・評価付きのWikiのデータ\\
+\url{http://grouplens.org/datasets/wikilens/}
+\item[HetRec 2011]
+RecSys2011の併設ワークショップでのデータ，評価の他に追加的な情報がありコンテキスト考慮型推薦などの実験に\\
+\url{http://grouplens.org/datasets/hetrec-2011/}
+\item[Yelp]
+商品の評価サイト\\
+\url{http://www.yelp.com/dataset_challenge/}
+\end{description}
+
+\section{ソフトウェア}
+\label{sec:reference-software}
+
+主なオープンソースの推薦システム
+\begin{description}
+\item[LensKit]
+Grouplens研究グループが実装している\\
+\url{http://lenskit.grouplens.org/}
+\item[MyMediaLite]
+Microsoft社の .NET 環境下で動作\\
+\url{http://mymedialite.net/}
+\item[GraphLab]
+線形代数のライブラリだが，行列分解型の推薦アルゴリズムを多く実装している\\
+\url{http://graphlab.org}
+\item[Mahaut] MapReduce上で動作する大規模用\\
+\url{http://mahout.apache.org/}
+\end{description}
