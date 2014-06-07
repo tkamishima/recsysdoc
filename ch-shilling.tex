@@ -1,11 +1,11 @@
 %!TEX root =  main.tex
 %!TEX encoding = UTF-8 Unicode
 \chapter{サクラ攻撃}
-\label{sec:shilling}
+\label{chap:shilling}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.96\fullwidth]{shillingattack.pdf}
+\includegraphics[width=0.96\linewidth]{shillingattack.pdf}
 \caption{サクラ攻撃を行う動機}
 \label{fig:shilling-motivation}
 \end{figure}
@@ -57,18 +57,17 @@
 
 \begin{figure}
 \centering
-\includegraphics[width=0.6\fullwidth]{attackprofile1.pdf}\\
-(a)~標的アイテムのみ\\
-\bigskip
-\includegraphics[width=0.6\fullwidth]{attackprofile2.pdf}\\
-(b)~標的アイテム＋詰め物アイテム
+\subcaptionbox{標的アイテムのみ\label{fig:attackprofile:a}}%
+{\includegraphics[width=0.6\fullwidth]{attackprofile1.pdf}}\\\bigskip
+\subcaptionbox{標的アイテム＋詰め物アイテム\label{fig:attackprofile:b}}%
+{\includegraphics[width=0.6\fullwidth]{attackprofile2.pdf}}
 \caption{攻撃プロファイル}
 \label{fig:attackprofile}
 \end{figure}
 
 サクラ攻撃をどのように行うかについて述べる\cite{www:04:01}．
 図\ref{fig:attackprofile}は，排除攻撃の様子を示した．
-まず，図\ref{fig:attackprofile}(a)に注目されたい．
+まず，図\ref{fig:attackprofile:a}に注目されたい．
 上側は，通常利用者の嗜好データ(通常プロファイル)を示した．
 この通常利用者に推薦されるアイテムを，サクラ攻撃によって変えたいとする．
 一方，下側は，仮想利用者であるサクラボットが推薦システムに入力する嗜好データで，攻撃プロファイル (attack profile) と呼ぶ．
@@ -77,14 +76,14 @@
 この中で，丸で示したアイテムは，排除したい競合製品を表し，これを標的アイテム (target item) と呼ぶ．
 通常利用者はこの標的アイテムを未評価で，今からこの利用者の標的アイテムへの評価値を予測するとしよう．
 
-このとき，標的アイテムを推薦されないようにするには図\ref{fig:attackprofile}(a)のように，サクラボットは標的アイテムに最低の評価「1」を与えさえすれば良さそうである．
+このとき，標的アイテムを推薦されないようにするには図\ref{fig:attackprofile:a}のように，サクラボットは標的アイテムに最低の評価「1」を与えさえすれば良さそうである．
 しかし，この攻撃は失敗する．多くのサクラボットが悪い評価を与えることで，このアイテムへの平均的な評価は確かに低下する．
 だが，協調フィルタリングでは，嗜好パターンが似ている利用者を参考に推薦することを思いだされたい．
 この利用者の通常プロファイルでは，標的アイテム以外の四角や八角のアイテムも評価されている．
 一方，攻撃プロファイルでは，丸の標的アイテムのみが評価され，それ以外の四角や八角のアイテムは全て未評価である．
 そのため，通常プロファイルと攻撃プロファイルは似ていないと判定され，サクラボットとこの利用者の嗜好パターンは違うとみなされる．そのため，標的アイテムの評価は通常利用者の推薦には反映されず，攻撃は失敗する．
 
-そこで，他の利用者の嗜好パターンに攻撃プロファイルを似せるため，図\ref{fig:attackprofile}(b)のように，標的アイテム以外の四角や八角のアイテム群にも評価値を与える．
+そこで，他の利用者の嗜好パターンに攻撃プロファイルを似せるため，図\ref{fig:attackprofile:b}のように，標的アイテム以外の四角や八角のアイテム群にも評価値を与える．
 これらのアイテムを詰め物アイテム (filler item) と呼ぶ．
 これらの，詰め物アイテムへの評価が通常利用者のそれと類似していれば，通常プロファイルと攻撃プロファイルとは類似していると判断される．
 すると，攻撃プロファイルの標的アイテムへの評価は，通常利用者の推薦に影響し，攻撃は成功する．

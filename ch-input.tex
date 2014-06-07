@@ -1,7 +1,7 @@
 %!TEX root =  main.tex
 %!TEX encoding = UTF-8 Unicode
 \chapter{データの入力}
-\label{sec:getpref}
+\label{chap:input}
 
 ここでは，推薦システムの実行過程の最初の段階である「データの入力」について述べる．
 この段階では，活動利用者に自身の嗜好データを，推薦システムへ入力させる．
@@ -40,7 +40,7 @@
 例えば，購入したり，閲覧したりしたアイテムには，利用者は関心があるとみなしたりする．
 
 まず，二つの嗜好データの獲得法を比較する．
-これらの獲得法の長所と短所を\ref{tab:getprefcomp}にまとめた．
+これらの獲得法の長所と短所を表\ref{tab:getprefcomp}にまとめた．
 データ量については，利用者の嗜好の予測には統計的な方法が用いられるので，予測を正確にするにはより多くのデータを収集できた方が有利となる．
 しかし，質問に答えるといった手間を利用者は嫌うことが多いため，明示的な獲得では多数のデータの収集は難しい．
 よって，これらの点では暗黙的な手法が有利である．
@@ -92,7 +92,7 @@
 文献\cite{sigchi:03:02}では，利用者は評価尺度の目盛りが細かい方を好む傾向があること，さらに，細かい評価で予測精度が向上することはないが悪くもならないことを報告している．
 よって，目盛りは細かめに設定することを推奨している．
 さらに，${-}3$〜${+}3$の尺度で，中立の$0$を抜いた尺度を使うと，中立の評価の多くは弱い肯定的な評価$+1$に移されること，予測評価値を見せながら評価させると，利用者はそれに「引きずられた」評価をすることも報告している．
-\ref{sec:recomtask}で述べた適合アイテム発見を目的とする場合，目的に適合/不適合の2段階でも十分な場合が多いが，評価閲覧タスクでは，どれくらい不要なアイテムを除外したいかは利用者次第なので，より詳細な多段階の尺度を用いる方が良いだろう．
+\ref{sec:recomtask}節で述べた適合アイテム発見を目的とする場合，目的に適合/不適合の2段階でも十分な場合が多いが，評価閲覧タスクでは，どれくらい不要なアイテムを除外したいかは利用者次第なので，より詳細な多段階の尺度を用いる方が良いだろう．
 次に，質問の仕方にもいろいろな配慮をすべきである．
 例えば，採点法では等間隔の尺度を連想させるように，等間隔の目盛りを見せるなどの工夫がある．これらの配慮については中森の\cite{jb:022:00}を参考にされたい．
 %@@@ recsys:11:11:01
@@ -122,33 +122,23 @@
 %(b) Amazon.com  7     5     8    20    60
 %(c) 寿司        7.9   9.1  22.6  22.7  37.5
 \centering
-\begin{minipage}{0.6\fullwidth}
-\centering
-\includegraphics[width=\textwidth]{rating-score1.pdf}\\
-(a)~MovieLens \cite{url:008}
-\end{minipage}\\\medskip
-\begin{minipage}{0.6\fullwidth}
-\centering
-\includegraphics[width=\textwidth]{rating-score2.pdf}\\
-(b)~Amazon.com \cite{misc:007}
-\end{minipage}\\\medskip
-\begin{minipage}{0.6\fullwidth}
-\centering
-\includegraphics[width=\textwidth]{rating-score2.pdf}\\
-(c)~寿司 \cite{url:020,epublist:064}
-\end{minipage}
+\subcaptionbox{MovieLens \cite{url:008}\label{fig:prefdist:a}}%
+{\includegraphics[width=0.6\linewidth]{rating-score1.pdf}}\\\medskip
+\subcaptionbox{Amazon.com \cite{misc:007}\label{fig:prefdist:b}}%
+{\includegraphics[width=0.6\linewidth]{rating-score2.pdf}}\\\medskip
+\subcaptionbox{寿司 \cite{url:020}\label{fig:prefdist:c}}%
+{\includegraphics[width=0.6\linewidth]{rating-score3.pdf}}
 \caption{アイテムへの評価値の分布}
 \label{fig:prefdist}
 \end{figure}
 
 次に，評価値の偏りについて述べる．
-\ref{fig:prefdist}に，5段階の採点法を用いた3種類の嗜好データの，評価値の分布を示す．
-それぞれ，(a)~MovieLensの100万要素のデータ集合\cite{url:008}，
-(b)~電子商取引サイトAmazon.com\cite{misc:007}，(c)~寿司の嗜好調査\cite{url:020,epublist:064}での分布である．
-どのデータでも，好きな方へ明らかに偏っている．
+図\ref{fig:prefdist}に，5段階の採点法を用いた3種類の嗜好データの，評価値の分布を示す．
+それぞれ，\subref{fig:prefdist:a}~MovieLensの100万要素のデータ集合\cite{url:008}，\subref{fig:prefdist:b}~電子商取引サイトAmazon.com\cite{misc:007}，\subref{fig:prefdist:c}~寿司の嗜好調査\cite{url:020,epublist:064}での分布である．
+どのデータでも，『好き』の方へ明らかに偏っている．
 この偏りの原因には，サンプリングと真の嗜好からの乖離の二つが考えられる.
-サンプリングの偏りの原因として，\ref{fig:prefdist}の(a)や(b)では，利用者が，関心がある選択的にアイテムを評価していることや，(b)や(c)では，市場の淘汰を受けて人気のあるアイテムのみが評価候補となっていることが挙げられる．
-このようなサンプリングの偏りは，\ref{sec:prederr}で指摘したように，予測誤差の正確な評価を妨げる．
+サンプリングの偏りの原因として，図\ref{fig:prefdist:a}や\subref{fig:prefdist:b}では，利用者が，関心がある選択的にアイテムを評価していることや，図\ref{fig:prefdist:b}や\subref{fig:prefdist:c}では，市場の淘汰を受けて人気のあるアイテムのみが評価候補となっていることが挙げられる．
+このようなサンプリングの偏りは，\ref{sec:prederr}節で指摘したように，予測誤差の正確な評価を妨げる．
 真の嗜好から乖離する理由としては，利用者個人がもつ心理効果の影響が考えられる．
 例えば，過剰な酷評は社会的通念的に良くないとの考えをもつ人には，全体的に評価が高くする寛大効果 (leniency effect)が見られ，あいまいな判断や質問では中心のスコアを選びやすい中心化傾向 (central tendency)などが生じる\cite{jb:026:00}．
 さらに，質問の仕方による影響も考えられる．
@@ -185,10 +175,11 @@
 強い嗜好を表すものから順に次のような行動を挙げている．
 \begin{center}
 \small
-\begin{tabular}{lllll}
-1. Purchase & 2. Assess & 3. Repeated Use & 4. Save/Print &  5. Delete \\
-6. Refer & 7. Reply & 8. Mark & 9. Terminate Search & 10. Examine/Read \\
-11. Consider & 12. Glimpse & 13. Associate & 14. Query
+\begin{tabular}{llll}
+1. Purchase & 2. Assess & 3. Repeated Use & 4. Save/Print \\
+5. Delete & 6. Refer & 7. Reply & 8. Mark \\
+9. Terminate Search & 10. Examine/Read & 11. Consider & 12. Glimpse \\
+13. Associate & 14. Query & &
 \end{tabular}
 \end{center}
 文献\cite{ieeem:07:01}では，閲覧，ビデオのプレビュー，購入の3種類の
@@ -205,13 +196,13 @@
 
 嗜好データで推薦に影響するその他の要因を挙げておく．
 利用者が初めてシステムを利用するときに，特定のアイテム群について明示的に質問して，嗜好データを集めることが考えられる．
-全ての利用者が共通に評価しているアイテム群があると，\ref{sec:prediction}の協調フィルタリングでは利用者間の嗜好の類似性を評価しやすくなる利点がある．
+全ての利用者が共通に評価しているアイテム群があると，\ref{chap:cf}章の協調フィルタリングでは利用者間の嗜好の類似性を評価しやすくなる利点がある．
 しかし，音楽のようにその場で少し聞かせて評価できるようなものならよいが，映画などは見たことがないものは評価しにくい．
 よって，こうした共通アイテム集合を利用できるかどうかは推薦するアイテムの種類に依存する．
 
 評価したときの時間情報も利用できる．
 服飾品のように流行の影響がある場合には，時間がたった嗜好データはあまり有効ではないだろう．
-また時間の前後関係に依存する\ref{sec:timeseries}のような嗜好の予測方法もある．
+また時間の前後関係に依存する\ref{sec:timeseries}節のような嗜好の予測方法もある．
 単純な好き・嫌いではなく，Zagatのレストランガイドのように，味・サービス・内装といった項目ごとに分けて嗜好データを収集することもできる．
 こうしたシステムとしては\cite{ieeem:07:02}がある．
 
@@ -236,7 +227,7 @@
 %活動利用者以外の嗜好データも利用するシステムでは，その利用者の推薦
 %における重要度\cite{tjsai:04:09}なども利用できる．
 デモグラフィックな特徴があれば，新規利用者に対しても推薦が可能になる利点があるが，プライバシー問題の観点から，その収集が困難である問題がある．
-この問題に対しては，データの利用目的を説明すること\cite{sigir:01:01}や，\ref{sec:privacycf}のプライバシー協調フィルタリングの導入といった対処がある．
+この問題に対しては，データの利用目的を説明すること\cite{sigir:01:01}や，\ref{chap:privacy}章のプライバシー協調フィルタリングの導入といった対処がある．
 
 \subsection{利用状況の特徴}
 

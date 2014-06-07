@@ -1,9 +1,9 @@
 %!TEX root =  main.tex
 %!TEX encoding = UTF-8 Unicode
 \chapter{推薦の提示}
-\label{sec:present}
+\label{chap:output}
 
-本章では，\ref{sec:cfscheme}の推薦システムの実行過程の最後の段階である「推薦の提示」についてまとめる．
+本章では，\ref{chap:oipmodel}章の推薦システムの実行過程の最後の段階である「推薦の提示」についてまとめる．
 この段階では，予測した評価を，活動利用者の目的に適した形式で提示する．
 なお，推薦システムの利用者へのアンケート調査結果に基づいて，結果の出力に対する設計指針を，定性的な面から論じた文献に\cite{sigir:01:01}がある．
 推薦したアイテムに関する情報も提示すべきことや，推薦リストのレイアウトや，これを閲覧するインターフェースの重要性などを指摘している．
@@ -24,7 +24,7 @@
  例えば，商品と共に推薦の度合いを★印で示したり，関連商品を同時に示したりする．
  利用者に主導権があり，システム側は積極的な推薦はしない．
 \end{description}
-\ref{sec:systemtarget}の5種類の運用側の目的のうち「通知サービス」ではpush型を，他の目的ではpull型かpassive型を利用することになる．
+\ref{sec:systemtarget}節の5種類の運用側の目的のうち「通知サービス」ではpush型を，他の目的ではpull型かpassive型を利用することになる．
 
 その他，配送するかどうかの決定についての工夫もある．
 マイクで獲得した発話内容から，視聴中のTV番組への関心の度合いを推定し，関心が低いと推定されたときにのみ積極的に推薦をする方法\cite{trjsai:07:01}などが提案されている．
@@ -51,32 +51,26 @@
 \section{推薦の表示形式}
 \label{sec:present:style}
 
-推薦すべきアイテム群を表示する形式は，\ref{sec:recomtask}のタスクの種類に応じて以下のように適切なものを選択すべきである．
+推薦すべきアイテム群を表示する形式は，\ref{sec:recomtask}節のタスクの種類に応じて以下のように適切なものを選択すべきである．
 
 \begin{figure}
 \centering
-\begin{minipage}[t]{0.48\fullwidth}
-\centering
-\includegraphics[width=\textwidth]{pstyle1.png}\\
-(a) 適合アイテム発見 (Amazon.co.jp)
-\end{minipage}
-\hspace{0.02\fullwidth}
-\begin{minipage}[t]{0.48\fullwidth}
-\centering
-\includegraphics[width=\textwidth]{pstyle2.png}\\
-(b) 評価値予測 (MovieLens\cite{url:008})
-\end{minipage}\\
+\subcaptionbox{適合アイテム発見 (Amazon.co.jp)\label{fig:presentation:a}}%
+{\includegraphics[width=0.48\linewidth]{pstyle1.png}}%
+\hspace{0.02\linewidth}%
+\subcaptionbox{評価値予測 (MovieLens~\cite{url:008})\label{fig:presentation:b}}%
+{\includegraphics[width=0.48\linewidth]{pstyle2.png}}\\
 \caption{推薦結果の表示例}
 \label{fig:presentation}
 {\footnotesize スクリーンショットは 2007/07/26 に取得した．}
 \end{figure}
 
-適合するものを一つ見つけ出す適合アイテム発見を目的とする場合には，予測される評価の高いものから順に整列したリストを利用者に提示するのが一般的である（\ref{fig:presentation}(a)）．
+適合するものを一つ見つけ出す適合アイテム発見を目的とする場合には，予測される評価の高いものから順に整列したリストを利用者に提示するのが一般的である（図\ref{fig:presentation:a}）．
 %このリストの上位のアイテムほど，利用者の嗜好に適合する確率が高いだろう．
 利用者はこのリストを上位から閲覧することで，自分の嗜好に適合したアイテムを素早く見つけることができる．
 
-評価閲覧を目的とする利用者は，積極的な決定をする意図をもっていない．
-そこで，閲覧中のアイテムに，活動利用者の予測評価値を付随的に提示する．これは，★の数や，アイコン，グラフなどで表す（\ref{fig:presentation}(a)）．
+評価値予測で閲覧中にアイテムの評価を得ることを目的とする利用者は，積極的な決定をする意図をもっていない．
+そこで，閲覧中のアイテムに，活動利用者の予測評価値を付随的に提示する．これは，★の数や，アイコン，グラフなどで表す（図\ref{fig:presentation:b}）．
 このような情報を参照することで，多数の候補の中から，利用者にとって関心のあるものを中心に閲覧できるようになる．
 
 %利用者が自分の嗜好に適合するものを網羅的に見つけ出すことが目的である，適合アイテム列挙では，全ての候補を必ず利用者に提示しなくてはならない．
@@ -86,8 +80,7 @@
 \index{多様性}\index{diversity}
 %@@@ 多様性の章に移行
 
-評価閲覧（\ref{sec:recomtask}）を目的とする場合は，利用者の関心の幅を広げるため，多様性（\ref{sec:recomtype}）の高い推薦
-が望まれる．
+評価値予測（\ref{sec:recomtask}節）を目的とする場合は，利用者の関心の幅を広げるため，多様性（\ref{sec:recomtype}節）の高い推薦が望まれる．
 そこで，文献\cite{www:05:01}では多様性を向上させる目的で，予測精度を犠牲にしても，より広範囲の分野のアイテムを推薦する\term{話題多様化}{topic diversification}を提案している．
 この多様化の有効性を，同種のアイテムに対しては，1度目より2度目，2度目より3度目に支払いたいと思う対価が減少する経済学における収穫逓減の法則 (law of diminishing marginal returns)との関連付けて論じている．
 具体的には，アイテムの階層的な分類を導入し，分類階層の近さによってアイテム間の類似度を測る．
@@ -122,17 +115,11 @@
 
 \begin{figure}
 \centering
-\begin{minipage}[b]{0.48\fullwidth}
-\centering
-\includegraphics[width=\textwidth]{Herlocker.png}\\
-(a)~類似した嗜好の利用者の評価の提示 \cite{cscw:00:01}
-\end{minipage}
-\hspace{0.02\fullwidth}
-\begin{minipage}[b]{0.48\fullwidth}
-\centering
-\includegraphics[width=\textwidth]{explanation2.png}\\
-(b)~推薦の根拠となった嗜好データの提示 (Amazon.co.jp)
-\end{minipage}\\
+\subcaptionbox{類似した嗜好の利用者の評価の提示 \cite{cscw:00:01}\label{fig:explanation:a}}%
+{\includegraphics[width=0.48\linewidth]{Herlocker.png}}%
+\hspace{0.02\linewidth}%
+\subcaptionbox{推薦の根拠となった嗜好データの提示 (Amazon.co.jp)\label{fig:explanation:b}}%
+{\includegraphics[width=0.48\linewidth]{explanation2.png}}\\
 \caption{推薦理由の提示例}
 \label{fig:explanation}
 {\footnotesize スクリーンショットは 2007/07/26 に取得した．}
@@ -140,7 +127,7 @@
 
 推薦の透明性を高める，すなわち，利用者が入力した嗜好データから，推薦を導いた根拠を明示することで，推薦への信頼を高める試みがある．
 文献\cite{cscw:00:01}では，こうした根拠を提示する手法を比較している．
-その中で最も有効な方法とされたのが\ref{fig:explanation}(a)の方法である．
+その中で最も有効な方法とされたのが図\ref{fig:explanation:a}の方法である．
 これは，活動利用者と類似した嗜好をもつ他の利用者の，推薦した映画についての評価値を棒グラフで示したものである．
 この例では，推薦した映画について，嗜好が似ている人たちのほとんどが，最高か，それに次ぐ評価をしていることが，一目で分かる．
 このように，推薦の手順の内部を示すアプローチを\term{ホワイトボックス}{whitebox}アプローチと呼ぶ．
@@ -149,11 +136,11 @@
 推薦の強度とは，どれくらいアイテムを好むと予測しているかということである．
 利用者の嗜好を5段階で予測するなら，5と予測したときに強い推薦といえる．
 一方の推薦の確信度とは，この推薦をどれくらい確かだと考えているかということである．
-\ref{sec:probmodel}の確率モデルで，適合/不適合の2段階で活動利用者の嗜好を予測したとしよう．
+\ref{sec:probmodel}節の確率モデルで，適合/不適合の2段階で活動利用者の嗜好を予測したとしよう．
 このとき，適合すると予測した確率が$0.6$でも$0.9$でも，予測は「適合」だが，後者のときにより確かな推薦といえる．
 さらに，他の方法でも実験したが，利用者の満足を向上させた方法は無かったと報告している．
 
-その他，\ref{sec:item-item}のようにアイテム間の類似度に基づく推薦では，推薦に関連したアイテムを提示するというホワイトボックスアプローチもある．
-\ref{fig:explanation}(b)は，活動利用者自身の，推薦の根拠となった他のアイテムへの評価を提示したものである．
+その他，\ref{sec:item-item}節のようにアイテム間の類似度に基づく推薦では，推薦に関連したアイテムを提示するというホワイトボックスアプローチもある．
+図\ref{fig:explanation:b}は，活動利用者自身の，推薦の根拠となった他のアイテムへの評価を提示したものである．
 また，暗黙的に嗜好データを獲得した場合，推薦の根拠を利用者が認知できなくなるので，推薦と共に根拠となった嗜好データを示す方法もある．
 ただし，予測評価値などを提示して，利用者が嫌いなアイテムが高評価されていると，システムに対する信頼を失う危険性も指摘されている\cite{sigir:01:01}．
