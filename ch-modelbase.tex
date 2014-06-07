@@ -5,7 +5,7 @@
 \indexmain{モデルベース法}\indexmain{model-based method}
 
 モデルベース法では，活動利用者に推薦をする前にモデルを構築する．
-\ref{sec:aboutarticle}で述べたように，万能なモデルは存在しないので，多様なモデルが目的に合わせて提案されている．こらを順次紹介する．
+ノーフリーランチ定理により万能な予測モデルは存在しないので，多様なモデルが目的に合わせて提案されている．こらを順次紹介する．
 
 \section{クラスタモデル}
 \label{sec:clustermodel}
@@ -14,7 +14,7 @@
 クラスタとは対象の集合を分割した部分集合で，同じクラスタ内の対象は互いに似ているが，違うクラスタでは似ていないという条件を満たすものである．
 こうしたクラスタを得る手法をクラスタリングという\cite{jpublist:034,jb:038:00,jb:020:00}．
 この手法を用いて，嗜好パターンが類似している利用者のクラスタに，標本利用者の集合を分割する．
-ここで，利用者間の類似度は，\ref{sec:memory-based}の式\eqref{eq:glsim}のPearson相関係数のように，いろいろなアイテムへの評
+ここで，利用者間の類似度は，\ref{sec:memory-based}節の式\eqref{eq:glsim}のPearson相関係数のように，いろいろなアイテムへの評
 価値がどれくらい類似しているかによって測る．
 活動利用者への推薦は，活動利用者と各クラスタとの類似度を調べ，最も似ているクラスタを見つける．
 そして，そのクラスタ中の標本利用者の平均評価値が高いアイテムから順に活動利用者に推薦する．
@@ -44,12 +44,12 @@
 
 最初に，回帰問題に帰着させる手法から紹介する．
 最も簡単な線形関数の場合を考える．
-\ref{sec:item-item}の式\eqref{eq:iicf}は，詳細を無視すれば次のような線形モデルとみなせる．
+\ref{sec:item-item}節の式\eqref{eq:iicf}は，詳細を無視すれば次のような線形モデルとみなせる．
 \begin{equation}
 \hat{r}_{ay} = \sum_j w_{yj} r_{aj}
 \label{eq:itemlinear}
 \end{equation}
-\ref{sec:item-item}では，パラメータ$w_{yj}$はアイテム$y$と$j$の嗜好パターンの類似性を，相関係数など経験的に選んだ類似度で決めた．
+\ref{sec:item-item}節では，パラメータ$w_{yj}$はアイテム$y$と$j$の嗜好パターンの類似性を，相関係数など経験的に選んだ類似度で決めた．
 しかし，与えられた評価値の集合を訓練事例として，機械学習の手法を適用すれば，もっと予測精度の高い関数を獲得できるのではないか？
 この考えに従い，これらのパラメータを決める問題を\term{回帰}{regression}や\term{あてはめ}{fitting}~\cite{eb:053:00,jpublist:077x}という機械学習や統計的予測の問題に帰着させ解く．
 
@@ -83,7 +83,7 @@ $\bfu_x$の要素を説明変数と，$\bfv_y$の要素をパラメータとみ�
 分解ができれば，任意の利用者の任意アイテムに対する推定評価値$\hat{r}_{xy}=\bfu_x^\T \bfv_y$が計算できる．
 しかし，実際の$\bfR$には欠損値があるので，文献\cite{sigir:02:01}では，これらの欠損値を潜在変数とみなしてEMアルゴリズム\cite{jrss:77:01}\index{EMアルゴリズム}\index{EM algorithm}を適用して解いている．
 欠損値に対処する方法は，潜在変数以外にも，全員が必ず評価するアイテム集合を利用する，欠損値を平均値などで補完する，欠損した要素は無視して損失を計算する\cite{kdd:07:01}といった方法もある．
-回帰モデルは単純なので，演算操作が複雑になるプライバシー保護協調フィルタリング（\ref{sec:privacycf}）などへの適用や，カーネルを使った非線形回帰を導入して予測の向上を図るといった拡張が可能である．
+回帰モデルは単純なので，演算操作が複雑になるプライバシー保護協調フィルタリング（\ref{chap:privacy}章）などへの適用や，カーネルを使った非線形回帰を導入して予測の向上を図るといった拡張が可能である．
 
 次に文献\cite{kdd:99:04}の\textbf{Horting}\index{Horting}法を紹介する．
 式\eqref{eq:itemlinear}のように全体を一つの線形モデルで表すと，大まかすぎて予測精度が低くなる場合がある．
@@ -141,11 +141,11 @@ $\bfu_x$の要素を説明変数と，$\bfv_y$の要素をパラメータとみ�
 
 \subsection{順序回帰問題に帰着させる方法}
 
-\ref{sec:explicitrating}では，採点法や格付け法による評価値は，本来は順序付カテゴリとして扱うべきものであることを述べた．
+\ref{sec:explicitrating}節では，採点法や格付け法による評価値は，本来は順序付カテゴリとして扱うべきものであることを述べた．
 すなわち，評価値が2のアイテムは，4のアイテムの半分程度好きなのではなく，評価値3のアイテムより，4のアイテムの方がより好きであるということだけを示している．
 こうした順序付カテゴリ値を予測する問題は順序回帰と呼ばれる．
 この順序回帰を，ブースティング (boosting) \cite{icml:96:02,jjsai:99:01} の枠組みで扱う\textbf{RankBoost}~\cite{icml:98:03,jmlr:03:02} \index{rankboost@RankBoost}で推薦をする研究などがある．
-後に，この順序回帰を用いた，内容ベースと協調フィルタリングのハイブリッド法を\ref{sec:combmethod}で紹介する．
+後に，この順序回帰を用いた，内容ベースと協調フィルタリングのハイブリッド法を\ref{sec:combmethod}節で紹介する．
 
 \section{確率モデル}
 \label{sec:probmodel}
@@ -173,7 +173,7 @@ $\bfu_x$の要素を説明変数と，$\bfv_y$の要素をパラメータとみ�
 このように簡潔になるので，予測評価値を提示する評価閲覧よりも，適合か不適合かの判定ができればよい適合アイテム発見タスクに適す．
 \index{適合アイテム発見}\index{finding some good items}
 この履歴条件型モデルでは，条件付確率\eqref{eq:escore}の計算のため，肯定的評価の$r_{xy}=1$と否定的評価の$r_{xy}=0$の両方の場合の訓練事例が必要である．
-しかし，\ref{sec:getpref}で述べたように，暗黙的な評価では，購入や閲覧などの行動がなかったことで否定的な評価とみなす．
+しかし，\ref{chap:input}章で述べたように，暗黙的な評価では，購入や閲覧などの行動がなかったことで否定的な評価とみなす．
 すると，未評価と否定的評価は混同され，$r_{xy}=0$となる事例にはノイズが多くなる．
 そのため，未評価と否定的評価が明確に区別される事例が必要となり，な，この履歴条件型ではこうした暗黙的評価では不利になる．
 
@@ -216,7 +216,7 @@ $\bfu_x$の要素を説明変数と，$\bfv_y$の要素をパラメータとみ�
 \index{隠れ変数|see{潜在変数}}\index{hidden variable|see{latent variable}}
 これも多値変数で$\calZ=\cbr{1,\ldots,K}$中の値をとり，潜在的な嗜好のパターンを表す．
 この潜在変数の値はデータとして観測されることはなく，モデルの中でのみその存在を仮定する．
-これはクラスタモデルと類似しているので，灰色の羊問題（\ref{sec:clustermodel}）\index{灰色の羊問題}\index{gray sheep problem}が生じるように思える．
+これはクラスタモデルと類似しているので，灰色の羊問題（\ref{sec:clustermodel}節）\index{灰色の羊問題}\index{gray sheep problem}が生じるように思える．
 だが，$K$個のパターンのうちどれか一つに割り当てるのではなく，それらが混ざり合った状態を考慮するので，この問題は生じない．
 そして，この潜在変数を用いて，$x$と$y$の同時確率を，次式で表すのがpLSAモデルである．
 \begin{align}
@@ -229,24 +229,16 @@ $\bfu_x$の要素を説明変数と，$\bfv_y$の要素をパラメータとみ�
 
 \begin{figure}
 \centering
-\begin{minipage}{0.3\fullwidth}
-\centering
-\setlength{\fboxsep}{0pt}
-\fbox{\includegraphics[width=\textwidth]{plsa.pdf}}\\
-(a) 評価値なし
-\end{minipage}
-\hspace{0.02\fullwidth}
-\begin{minipage}{0.3\fullwidth}
-\centering
-\setlength{\fboxsep}{0pt}
-\fbox{\includegraphics[width=\textwidth]{plsa2.pdf}}\\
-(b) 評価値あり
-\end{minipage}
+\subcaptionbox{評価値なし\label{fig:latentmodel:a}}%
+{\includegraphics[width=0.3\linewidth]{plsa.pdf}}%
+\hspace{0.1\fullwidth}%
+\subcaptionbox{評価値あり\label{fig:latentmodel:b}}%
+{\includegraphics[width=0.3\textwidth]{plsa2.pdf}}
 \caption{pLSAモデル\cite{ijcai:99:01}}
 \label{fig:latentmodel}
 \end{figure}
 
-図\ref{fig:latentmodel}(a)は，\termmain{グラフィカルモデル}{graphical model} という表現方法でpLSAモデルを図示したものである．
+図\ref{fig:latentmodel:a}は，\termmain{グラフィカルモデル}{graphical model} という表現方法でpLSAモデルを図示したものである．
 このグラフで，灰色のノードは値が観測される$X$や$Y$のような\term{観測変数}{observed variable}（\textbf{可視変数 (visible variable)} ともいう）を，白いノードはその値が観測されない潜在変数を表す．
 \index{可視変数|see{観測変数}}\index{visible variable|see{observed variable}}
 有向辺は確率的な依存関係を表し，辺が出ている変数に，辺が入っている変数が依存することを表す．
@@ -299,43 +291,35 @@ y^\ast=\arg\max_{y\in\cbr{\calY\backslash\calY_{a}}}\Pr[Y=y|X=a]
 \hat{r}_{xy}=\frac{1}{\abs{\calR}}\sum_{r\in\calR}r\;\pb{R=r|X=a,Y=y}
 \]
 で計算する．なお，$\pb{r|x,y}$は$\pb{x,y,r}$から計算できる．
-図\ref{fig:latentmodel}(b)は$\Pr[x,y,r]$のモデル化の一例である．
+図\ref{fig:latentmodel:b}は$\Pr[x,y,r]$のモデル化の一例である．
 このモデルでは，利用者$x$は$z$で表されるグループに分類され，そのグループ$z$とアイテム$y$に依存して評価値$r$が決まると解釈できる．
 モデルを決めれば，あとは対数尤度を最大化するパラメータをEMアルゴリズムで求めればよい．
 文献\cite{ijcai:99:01}では他にもいくつかのモデルを挙げている．
 これらのモデルは評価値を離散変数で表し，カテゴリ分布に従うと考えているので，評価値の大小関係を無視している．
 そこで離散の評価値を実数値として扱うことで大小関係を考慮し，それがガウス分布に従うとするモデルもある\cite{sigir:03:01}．
-どのモデルが適切かだが，一般には\ref{sec:recomtype}で述べた交差確認法で，予測精度を最大にするようなものを選ぶ．
+どのモデルが適切かだが，一般には\ref{sec:recomtype}節で述べた交差確認法で，予測精度を最大にするようなものを選ぶ．
 
 \begin{figure}
 \centering
-\begin{minipage}[t]{0.3\fullwidth}
-\centering
-\setlength{\fboxsep}{0pt}
-\fbox{\includegraphics[width=\textwidth]{decoupled.pdf}}\\
-(a) decoupled
-\end{minipage}
-\hspace{0.02\fullwidth}
-\begin{minipage}[t]{0.3\fullwidth}
-\centering
-\setlength{\fboxsep}{0pt}
-\fbox{\includegraphics[width=\textwidth]{preford.pdf}}\\
-(b) preferred ordering
-\end{minipage}
+\subcaptionbox{decoupled\label{fig:decoupledmodel:a}}%
+{\includegraphics[width=0.3\textwidth]{decoupled.pdf}}
+\hspace{0.1\fullwidth}%
+\subcaptionbox{preferred ordering\label{fig:decoupledmodel:b}}%
+{\includegraphics[width=0.3\textwidth]{preford.pdf}}
 \caption{評価値の揺らぎを考慮したモデル\cite{uai:03:01}}
 \label{fig:decoupledmodel}
 \end{figure}
 
 この共起型の確率モデルは自由に設計できる余地が多く，いろいろな拡張が可能である．
-\ref{sec:explicitrating}では，利用者の評価値に一貫性はなく揺らぎがあるとを述べた．
+\ref{sec:explicitrating}節では，利用者の評価値に一貫性はなく揺らぎがあるとを述べた．
 こうした揺らぎを考慮する2種類の方法を，文献\cite{uai:03:01}では提案している．
-\ref{fig:decoupledmodel}(a)のdecoupledは，まず揺らぎのない真の評価値は分からないので，これを潜在変数$z_\mathrm{pref}$で表す．
+図\ref{fig:decoupledmodel:a}のdecoupledは，まず揺らぎのない真の評価値は分からないので，これを潜在変数$z_\mathrm{pref}$で表す．
 \index{decoupled model}
 この真の評価値は，同じ嗜好の利用者のグループを示す$z_x$と，類似したアイテムのグループを表す$z_y$に依存して決まる．
 さらに，評価値がどのように揺らぐのかというパターンに利用者は分けられ，そのパターンを潜在変数$z_r$で表す．
 観測される評価値$r$は真の嗜好$z_\mathrm{pref}$と揺らぎのパターン$z_r$に依存して決まる．
 推薦は，予測した真の評価値$z_\mathrm{pref}$によって行う．
-もう一つのpreferred orderingモデル（\ref{fig:decoupledmodel}(b)）は，評価値を順序尺度と考える方法である．
+もう一つのpreferred orderingモデル（図\ref{fig:decoupledmodel:b}）は，評価値を順序尺度と考える方法である．
 \index{preferred ordering model}
 同じ利用者$x$が二つのアイテム$y$と$y'$のそれぞれに$r$と$r'$の評価値を与えた場合を考える．
 このとき，$r$と$r'$の順序関係だけを取り出す関数$\ind(r,r')$を導入し，この関数$\ind$の値が，利用者とアイテムのグループを表す潜在変数$z_x$と$z_y$に依存するというモデル化である．
@@ -366,7 +350,7 @@ pLSAでは新規の利用者に対応できない問題があったが，これ�
 \index{時系列}\index{time series}
 
 時間に伴う変化を嗜好の予測に利用する方法を紹介する．
-\ref{sec:getprefother}で述べたように，標本利用者の時間順の行動や評価の履歴情報を，利用者DBに蓄積している場合がある．
+\ref{sec:getprefother}節で述べたように，標本利用者の時間順の行動や評価の履歴情報を，利用者DBに蓄積している場合がある．
 この情報から，利用者の行動の時間的推移を表すモデルを構築し，活動利用者の現在にいたる行動や評価とこのモデルから，嗜好を予測する手法を紹介する．
 
 \subsection{基本的な時系列モデル}
@@ -378,7 +362,7 @@ pLSAでは新規の利用者に対応できない問題があったが，これ�
 例えば，上記の連続ドラマの例であれば$y^{(1)}$〜$y^{(3)}$は，それぞれドラマの第1〜3回に相当する．
 この購入履歴が与えられたときの，次に購入するアイテムの条件付確率$\pb{y^{(t+1)}|\ang{Y^{(t)}}}$を求めておき，この確率を最大にするアイテムを推薦する手法を考える．
 これは，標本利用者の購入履歴を数え上げれば原理的には計算可能である．
-しかし，\ref{sec:rsyslimit}で述べたようにデータが疎であるので，いたるところで確率が$0$となり，実際にはこの方法では計算できない．
+しかし，\ref{sec:rsyslimit}節で述べたようにデータが疎であるので，いたるところで確率が$0$となり，実際にはこの方法では計算できない．
 このような場合には，$K$回前までの状態，すなわち購入アイテムに基づく$K$重マルコフモデルを用いることが多い．
 しかし，推薦の場合にはかなり過去の情報も次の状態に影響するため，単純にこのモデルを適用してもあまり有効ではない．
 
