@@ -1,0 +1,26 @@
+preamble
+"\n\\begin{theindex}\n"
+postamble
+"\n\n \\end{theindex}\n"
+item_x0   "\n\\item "
+item_x1   "\n \\subitem "
+item_x2   "\n  \\subsubitem "
+delim_0   "\\hfill "
+delim_1   "\\hfill "
+delim_2   "\\hfill "
+%
+% mendex
+character_order "SJE"
+lethead_prefix
+"\\hbox to \\linewidth{\\gtfamily\\bfseries "
+lethead_suffix
+"\\hfill}\\par\n\\nopagebreak\n"
+lethead_flag       1
+%symbol             "記号／数字"
+letter_head        2
+% makeindex
+heading_prefix
+"{\\vbox{\\hbox to \\linewidth{\\gtfamily\\bfseries "
+heading_suffix
+"\\ \\hskip\\fill}\\vskip5pt\\hrule\\vskip5pt}}\\nopagebreak\n"
+headings_flag      1

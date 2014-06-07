@@ -1,10 +1,15 @@
 %!TEX encoding = UTF-8 Unicode
-\documentclass[11pt,a4paper,papersize,oneside]{jsbook}
+\documentclass[12pt,a4paper,papersize,oneside]{jsbook}
 
-\usepackage[OT2,T1]{fontenc}
+\usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{newtxtext,newtxmath}
+\usepackage{stix} % math font: STIX font
+%\usepackage{newtxmath} % math font: Times like
+%\usepackage{newpxmath} % math font: Platino like
+%\usepackage{eulervm} % math font: hand write like
+%\usepackage{newtxtext} % text font: Times like
+\usepackage{newpxtext} % text font: Platino like
 \usepackage[dvipdfmx]{graphicx}
 \graphicspath{{Fig/}}
 \usepackage{url}
@@ -12,9 +17,14 @@
 \usepackage[dvipdfmx]{pxjahyper} % 日本語のhyperref
 \usepackage{makeidx}\makeindex  % allows for indexgeneration
 
+\usepackage[bold]{otf}
 \usepackage{pifont}
 \usepackage{array,booktabs}
 \usepackage{setspace}
+\usepackage{enumitem}
+\usepackage[labelformat=simple]{subcaption}
+\renewcommand\thesubfigure{(\alph{subfigure})}
+\renewcommand\thesubtable{(\alph{subtable})}
 
 % PDF meta information and bookmarks
 \hypersetup{
@@ -35,13 +45,14 @@ pdfnewwindow=true,      % links in new window
 
 % local macro definitions
 \usepackage{mathsymbols}
+\usepackage{myindex}
 
 % set pagesize: A4paper, margin=3cm
-%\setlength{\topmargin}{4.6truemm}
-%\setlength{\headheight}{1zh}
-%\setlength{\headsep}{1zh}
-%\setlength{\textheight}{\paperheight}\addtolength{\textheight}{-90truemm}\addtolength{\textheight}{-2zh}
-%\setlength{\footskip}{10truemm}
+\setlength{\topmargin}{4.6truemm}
+\setlength{\headheight}{1\baselineskip}
+\setlength{\headsep}{1\baselineskip}
+\setlength{\textheight}{\paperheight}\addtolength{\textheight}{-60truemm}\addtolength{\textheight}{-2\baselineskip}
+\setlength{\footskip}{0pt}
 \setlength{\oddsidemargin}{4.6truemm}
 \setlength{\evensidemargin}{\oddsidemargin}
 \setlength{\textwidth}{\paperwidth}\addtolength{\textwidth}{-60truemm}
@@ -55,20 +66,17 @@ pdfnewwindow=true,      % links in new window
 
 %%%%% condense floats %%%%%
 
-% \def\topfraction{0.99}
-% \def\bottomfraction{0.01}
-% \def\textfraction{0.01}
-% \def\floatpagefraction{0.99}
-% \def\dbltopfraction{0.99}
-% \def\dblfloatpagefraction{0.99}
-
-%%%%% other settings %%%%%
-\renewcommand{\seename}{\unskip\ \ding{"0B}} % change ``see also'' in indexes
+%\def\topfraction{0.99}
+%\def\bottomfraction{0.01}
+%\def\textfraction{0.01}
+%\def\floatpagefraction{0.99}
+%\def\dbltopfraction{0.99}
+%\def\dblfloatpagefraction{0.99}
 
 %%%%% title, author, and release %%%%%
 
-\title{推薦システムのアルゴリズム}
-\author{神嶌 敏弘 $\langle$\url{http://www.kamishima.net/}$\rangle$}
+\title{\Huge\sffamily\bfseries 推薦システムのアルゴリズム}
+\author{\Large\textbf{神嶌 敏弘} \quad$\langle\,$\url{http://www.kamishima.net/}$\,\rangle$}
 \date{Release: \input{version}}
 
 \begin{document}
@@ -82,8 +90,9 @@ pdfnewwindow=true,      % links in new window
 % --- Preface & Notation---
 \onehalfspacing
 
-%\include{intro}
-\input{notation}
+\include{fm-preface}
+\include{fm-ack}
+\include{fm-notation}
 
 % --- Table of Contents ---
 \tableofcontents
@@ -92,21 +101,45 @@ pdfnewwindow=true,      % links in new window
 \mainmatter
 
 % ---- Main Content ----
-\part{推薦システムの基本}
-\chapter{はじめに}
-\section{推薦システム}
 
-「\textbf{推薦システム (recommender system)}」とは，利用者にとって
-有用と思われる対象，情報，または商品などを選び出し，それらを利用者
-の目的に合わせた形で提示するシステムである．
-\index{推薦システム}
+\part{推薦システムの概要}
+\label{part:overview}
+\include{ch-intro}
+\include{ch-category}
+\include{ch-design}
+
+\part{推薦システムの実行過程}
+\label{part:process}
+\include{ch-oipmodel}
+\include{ch-input}
+\include{ch-process}
+\include{ch-output}
+
+\part{推薦システムのアルゴリズム}
+\label{part:algorithm}
+\include{ch-cf}
+\include{ch-memorybase}
+\include{ch-modelbase}
+\include{ch-hybridcf}
+\include{ch-cbf}
+\include{ch-hybrid}
+
+\part{推薦システムのその他の話題}
+\label{part:topic}
+\include{ch-privacy}
+\include{ch-shilling}
+\include{ch-othertopic}
+
+\part{まとめ}
+\label{part:conclusion}
+\include{ch-reference}
 
 \include{nocite}
+\include{indexsee}
 
 % ===== Back Matter =====
 \backmatter
-\singlespacing
-\pagestyle{empty}
+
 
 % ---- Acknowledgements ----
 %\medskip
@@ -114,10 +147,13 @@ pdfnewwindow=true,      % links in new window
 %みんなありがとう
 
 % ---- Bibliography ----
+\singlespacing
+\small
 \bibliographystyle{jsai}
 \bibliography{ebib,epublist,emisc,jbib,jpublist,jmisc}
 
 % --- Indexes ---
+\pagestyle{empty}
 \printindex
 
 \end{document}
