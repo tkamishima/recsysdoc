@@ -1,10 +1,15 @@
 %!TEX encoding = UTF-8 Unicode
-\documentclass[11pt,a4paper,papersize,oneside]{jsbook}
+\documentclass[12pt,a4paper,papersize,oneside]{jsbook}
 
-\usepackage[OT2,T1]{fontenc}
+\usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{newtxtext,newtxmath}
+\usepackage{stix} % math font: STIX font
+%\usepackage{newtxmath} % math font: Times like
+%\usepackage{newpxmath} % math font: Platino like
+%\usepackage{eulervm} % math font: hand write like
+%\usepackage{newtxtext} % text font: Times like
+\usepackage{newpxtext} % text font: Platino like
 \usepackage[dvipdfmx]{graphicx}
 \graphicspath{{Fig/}}
 \usepackage{url}
@@ -12,9 +17,11 @@
 \usepackage[dvipdfmx]{pxjahyper} % 日本語のhyperref
 \usepackage{makeidx}\makeindex  % allows for indexgeneration
 
+\usepackage[bold]{otf}
 \usepackage{pifont}
 \usepackage{array,booktabs}
 \usepackage{setspace}
+\usepackage{enumitem}
 
 % PDF meta information and bookmarks
 \hypersetup{
@@ -65,8 +72,8 @@ pdfnewwindow=true,      % links in new window
 
 %%%%% title, author, and release %%%%%
 
-\title{\LARGE\textbf{推薦システムのアルゴリズム}}
-\author{\textbf{神嶌 敏弘}\quad$\langle$\url{http://www.kamishima.net/}$\rangle$}
+\title{\Huge\sffamily\bfseries 推薦システムのアルゴリズム}
+\author{\Large\textbf{神嶌 敏弘} \quad$\langle\,$\url{http://www.kamishima.net/}$\,\rangle$}
 \date{Release: \input{version}}
 
 \begin{document}
@@ -81,6 +88,7 @@ pdfnewwindow=true,      % links in new window
 \onehalfspacing
 
 \include{fm-preface}
+\include{fm-ack}
 \include{fm-notation}
 
 % --- Table of Contents ---
@@ -90,14 +98,44 @@ pdfnewwindow=true,      % links in new window
 \mainmatter
 
 % ---- Main Content ----
+
 \part{推薦システムの概要}
 \label{part:overview}
+\include{ch-intro}
+\include{ch-category}
+\include{ch-design}
+
+\part{推薦システムの実行過程}
+\label{part:process}
+\include{ch-oipmodel}
+\include{ch-input}
+\include{ch-process}
+\include{ch-output}
+
+\part{推薦システムのアルゴリズム}
+\label{part:algorithm}
+\include{ch-cf}
+\include{ch-memorybase}
+\include{ch-collaborative}
+\include{ch-hybridcf}
+\include{ch-cbf}
+\include{ch-hybrid}
+
+\part{推薦システムのその他の話題}
+\label{part:topic}
+\include{ch-privacy}
+\include{ch-shilling}
+\include{ch-othertopic}
+
+\part{まとめ}
+\label{part:conclusion}
+\include{ch-reference}
 
 \include{nocite}
 
 % ===== Back Matter =====
 \backmatter
-\singlespacing
+
 
 % ---- Acknowledgements ----
 %\medskip
@@ -105,10 +143,13 @@ pdfnewwindow=true,      % links in new window
 %みんなありがとう
 
 % ---- Bibliography ----
+\singlespacing
+\small
 \bibliographystyle{jsai}
 \bibliography{ebib,epublist,emisc,jbib,jpublist,jmisc}
 
 % --- Indexes ---
+\pagestyle{empty}
 \printindex
 
 \end{document}

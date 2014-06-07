@@ -8,8 +8,8 @@
 
 \begin{center}
 \small\renewcommand{\arraystretch}{0.8}
-\begin{tabular}{@{}>{\centering}p{0.07\fullwidth}@{\hspace{0.01\fullwidth}}p{0.40\fullwidth}@{\hspace{0.04\fullwidth}}>{\centering}p{0.07\fullwidth}@{\hspace{0.01\fullwidth}}p{0.40\textwidth}@{}}\toprule
-\textbf{表記} & \textbf{内容} & \textbf{表記} & \textbf{内容} \\ \cmidrule(r){1-2}\cmidrule{3-4}
+\begin{tabular}{@{}>{\centering}p{0.09\fullwidth}@{\hspace{0.01\fullwidth}}p{0.38\fullwidth}@{\hspace{0.04\fullwidth}}>{\centering}p{0.09\fullwidth}@{\hspace{0.01\fullwidth}}p{0.38\textwidth}@{}}\toprule
+\textbf{表記} & \textbf{意味} & \textbf{表記} & \textbf{意味} \\ \cmidrule(r){1-2}\cmidrule{3-4}
 $x$ & 特定の利用者を表す & $y$ & 特定のアイテムを表す \\
 $X$ & 利用者を表す確率変数 & $Y$ & アイテムを表す確率変数 \\
 $\bfx$ & 利用者をまとめたベクトル & $\bfy$ & アイテムをまとめたベクトル \\
@@ -26,20 +26,20 @@ $\bfU$ & 利用者潜在因子行列 & $\bfV$ & アイテム潜在因子行列 \
 $\bfu_{x}$ & 利用者$x$の潜在因子ベクトル & $\bfv_{y}$ & アイテム$y$の潜在因子ベクトル \\
 $y^{(t)}$ & 時刻$t$での値 & $\ang{Y^{(t)}}$ & アイテムの時系列 \\
 $\theta\,\bftheta\,\bfTheta$ & パラメータを一般に表す & $\sig()$ & シグモイド関数 \\
-$\Dom()$ & 変数$x$の定義域 & $\nan$ & 欠損値 \\
+$\Dom()$ & 変数の定義域 & $\nan$ & 欠損値 \\
 \bottomrule
 \end{tabular}
 \end{center}
 
 スカラー関数 $f(x)$ に対して，その引数をベクトルとする表記 $f(\bfx)$ は，ベクトル $\bfx$ の各要素を関数 $f$ に適用して得られるベクトルを表す．
 
-確率変数 $X$ が離散の場合の確率質量関数も，連続値の場合の確率密度関数も特に区別することなく $\Pr(X)$ と表記する．
+確率変数 $X$ が離散の場合の確率質量関数も，連続値の場合の確率密度関数も特に区別することなく $\pb{X}$ と表記する．
 
-$\expect_{p(X)}[f(X)]$ は，分布 $p(X)$ についての次の期待値を表す：
+$\expect_{\pb[X]}[f(X)]$ は，分布 $\pb{X}$ についての次の期待値を表す：
 \[
-\begin{array}{l@{\text{ --- }}l}
-\sum_{x\in\Dom(X)} f(x) \Pr(x) & \text{$X$が離散の場合}\\
-\int_{x\in\Dom(X)}  f(x) \Pr(x) dx & \text{$X$が連続の場合}
+\begin{array}{l@{\text{ \makebox[3zw]{\dotfill} }}l}
+\sum_{x\in\Dom(X)} f(x) \pb{X=x} & \text{$X$が離散の場合}\\
+\int_{x\in\Dom(X)}  f(x) \pb{X=x} dx & \text{$X$が連続の場合}
 \end{array}
 \]
-なお，$p(X)$を省略した場合は，関数$f$の全ての確率変数の同時分布に関する期待値を表す．例えば，$\expect[f(X,Y)]$ は，$\expect_{p(X,Y)}[f(X,Y)]$ の意味である．
+なお，$\pb{X}$を省略した場合は，関数$f$の全ての確率変数の同時分布に関する期待値を表す．例えば，$\expect[f(X,Y)]$ は，$\expect_{\pb{X,Y}}[f(X,Y)]$ の意味である．
