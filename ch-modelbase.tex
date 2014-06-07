@@ -67,7 +67,7 @@ $\bfu_x$の要素を説明変数と，$\bfv_y$の要素をパラメータとみ�
 また，実際に観測できる評価値行列は$\bfR^\ast$ではなく，欠損のある$\bfR$である．
 そこで，$K$を$K\ll m,n$に固定し，$\bfR^\ast$との期待的な損失を最小化するように，$\bfR$を$\bfU$と$\bfV$に分解することで，モデルを獲得する．
 
-こうした分解をするには，\term{行列分解}{matrix decomposition}\index{matrix factorization|see{matrix decomposition}}の手法を用いる．
+こうした分解をするには，\term{行列分解}{matrix decomposition}の手法を用いる．
 こうした手法の一つ\cite{sigir:02:01}を述べる．
 %式\eqref{eq:iicf}は$m$個のアイテムへの評価で利用者を表現した
 %が，因子分析では$K$個の因子(factor)で利用者を表す．
@@ -199,7 +199,7 @@ $\bfu_x$の要素を説明変数と，$\bfv_y$の要素をパラメータとみ�
 もう一方の共起型の確率モデルについて述べる．
 このモデルでは，ある利用者が，あるアイテムを評価したことを，その利用者が$x$であるという事象と，そのアイテムが$y$であるという事象が共起しているととらえる．
 そして，この共起確率をモデル化する．
-このモデル化には，自然言語処理で文書と語の共起確率を表すために考案された\textbf{確率的潜在意味解析 (probabilistic latent semantic analysis; pLSA)}~\cite{uai:99:01}\indexmain{pLSA}\index{確率的潜在意味分析|see{pLSA}}\index{probabilistic latent semantic analysis|see{pLSA}}を利用する．
+このモデル化には，自然言語処理で文書と語の共起確率を表すために考案された\textbf{確率的潜在意味解析 (probabilistic latent semantic analysis; pLSA)}~\cite{uai:99:01}\indexmain{pLSA}を利用する．
 この確率モデルは非常に柔軟で，純粋な協調フィルタリングだけでなく，評価の揺らぎ，アイテムの特徴，コンテキスト，デモグラフィックな要因を導入するといった拡張が可能である．
 
 本節では，利用者の嗜好データのみに基づく協調フィルタリングを対象としたモデル\cite{ijcai:99:01}を紹介する．
@@ -212,7 +212,6 @@ $\bfu_x$の要素を説明変数と，$\bfv_y$の要素をパラメータとみ�
 このため，未評価と不支持が区別できない暗黙的評価の場合に，この共起型確率モデルは便利である．
 
 さらに，このモデルで重要な役割をはたす\term{潜在変数}{latent variable} $Z$（\textbf{隠れ変数 (hidden variable)} ともいう）を導入する．
-\index{隠れ変数|see{潜在変数}}\index{hidden variable|see{latent variable}}
 これも多値変数で$\calZ=\cbr{1,\ldots,K}$中の値をとり，潜在的な嗜好のパターンを表す．
 この潜在変数の値はデータとして観測されることはなく，モデルの中でのみその存在を仮定する．
 これはクラスタモデルと類似しているので，灰色の羊問題（\ref{sec:clustermodel}節）\index{灰色の羊問題}\index{gray sheep problem}が生じるように思える．
@@ -239,7 +238,6 @@ $\bfu_x$の要素を説明変数と，$\bfv_y$の要素をパラメータとみ�
 
 図\ref{fig:latentmodel:a}は，\termmain{グラフィカルモデル}{graphical model} という表現方法でpLSAモデルを図示したものである．
 このグラフで，灰色のノードは値が観測される$X$や$Y$のような\term{観測変数}{observed variable}（\textbf{可視変数 (visible variable)} ともいう）を，白いノードはその値が観測されない潜在変数を表す．
-\index{可視変数|see{観測変数}}\index{visible variable|see{observed variable}}
 有向辺は確率的な依存関係を表し，辺が出ている変数に，辺が入っている変数が依存することを表す．
 また，この図にはないが，値が確定しているパラメータは黒い点で表し，同じ確率変数を複数回サンプリングすることを示すプレートという表現もある．
 これらの表現については教科書\cite[8章]{jpublist:077x}などを参考にされたい．
@@ -333,7 +331,7 @@ y^\ast=\arg\max_{y\in\cbr{\calY\backslash\calY_{a}}}\Pr[Y=y|X=a]
 \end{figure}
 
 pLSAでは新規の利用者に対応できない問題があったが，これにベイズの枠組に拡張することで対応する\textbf{潜在的ディリクレ配分法 (latent Dirichlet allocation; LDA)}~\cite{jmlr:03:05}がある．
-\index{LDA}\index{潜在的ディリクレ配分法|see{LDA}}\index{latent Dirichlet allocation|see{LDA}}
+\index{LDA}
 式\eqref{eq:origplsamodel}のpLSAモデルでは，最初に既知の利用者を$\calX$の中から$\pb{x}$に従って選択し，その利用者の嗜好パターンの分布$\pb{z|x}$に基づいて選んだ嗜好パターンに基づいてアイテムを選択する．
 そのため，訓練データに表れない利用者については，その嗜好パターンが不明であり，pLSAでは対応できない．
 そこで，嗜好パターン$\bftheta$自体をディリクレ分布に従って生成するように拡張することで，新規利用者に対応できるようにしたのがこのLDAである．
@@ -366,8 +364,7 @@ pLSAでは新規の利用者に対応できない問題があったが，これ�
 しかし，推薦の場合にはかなり過去の情報も次の状態に影響するため，単純にこのモデルを適用してもあまり有効ではない．
 
 そこで，自然言語処理の言語モデルでよく利用される\textbf{最大エントロピーモデル (maximum entropy model; MaxEnt model)}を導入する．
-\indexmain{最大エントロピーモデル}\index{MaxEntモデル|see{最大エントロピーモデル}}
-\indexmain{maximum entropy model}\index{Maxent model}
+\index{最大エントロピーモデル}\index{maximum entropy model}
 \begin{equation}
 \pb{y^{(t+1)}|\ang{Y^{(t)}}}=
 \frac{1}{Z}
