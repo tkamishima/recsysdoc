@@ -22,7 +22,9 @@
 \usepackage{array,booktabs}
 \usepackage{setspace}
 \usepackage{enumitem}
-\usepackage{subcaption}
+\usepackage[labelformat=simple]{subcaption}
+\renewcommand\thesubfigure{(\alph{subfigure})}
+\renewcommand\thesubtable{(\alph{subtable})}
 
 % PDF meta information and bookmarks
 \hypersetup{
