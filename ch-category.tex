@@ -21,29 +21,16 @@
 
 \begin{figure}
 \centering
-\begin{subfigure}[b]{0.4\linewidth}
-\centering
-\includegraphics[width=\linewidth]{example1.png}
-\caption{非個人化 (iTunes Store)}\label{fig:plevel:a}
-\end{subfigure}%
+\subcaptionbox{非個人化 (iTunes Store)\label{fig:plevel:a}}%
+{\includegraphics[width=0.4\linewidth]{example1.png}}%
 \hspace{0.08\linewidth}%
-\begin{subfigure}[b]{0.4\linewidth}
-\centering
-\includegraphics[width=\linewidth]{example2.png}
-\caption{非個人化 (iTunes Store)}\label{fig:plevel:b}
-\end{subfigure}\\
-\medskip%
-\begin{subfigure}[b]{0.4\linewidth}
-\centering
-\includegraphics[width=\linewidth]{example56.png}
-\caption{一時的個人化 (Amazon.co.jp)}\label{fig:plevel:c}
-\end{subfigure}%
+\subcaptionbox{非個人化 (iTunes Store)\label{fig:plevel:b}}%
+{\includegraphics[width=0.4\linewidth]{example2.png}}\\\medskip
+\subcaptionbox{一時的個人化 (Amazon.co.jp)\label{fig:plevel:c}}%
+{\includegraphics[width=0.4\linewidth]{example56.png}}
 \hspace{0.08\linewidth}%
-\begin{subfigure}[b]{0.4\linewidth}
-\centering
-\includegraphics[width=\linewidth]{example4.png}
-\caption{永続的個人化 (Amazon.co.jp)}\label{fig:plevel:d}
-\end{subfigure}\\
+\subcaptionbox{永続的個人化 (Amazon.co.jp)\label{fig:plevel:d}}%
+{\includegraphics[width=0.4\linewidth]{example4.png}}\\
 \caption{個人化の度合いの異なる推薦の例}
 \label{fig:plevel}
 {\footnotesize\subref{fig:plevel:a}，\subref{fig:plevel:b}，\subref{fig:plevel:d}は2007/07/26日に，\subref{fig:plevel:c}は2007/08/04日にスクリーンショットを取得した．}

@@ -18,21 +18,12 @@
 %(b) Amazon.com  7     5     8    20    60
 %(c) 寿司        7.9   9.1  22.6  22.7  37.5
 \centering
-\begin{subfigure}{0.6\linewidth}
-\centering
-\includegraphics[width=\linewidth]{rsyscategory-icbf.pdf}\\
-\caption{内容ベースフィルタリング（間接指定型）}\label{fig:cfcbf:a}
-\end{subfigure}\\\medskip
-\begin{subfigure}{0.6\linewidth}
-\centering
-\includegraphics[width=\linewidth]{rsyscategory-dcbf.pdf}\\
-\caption{内容ベースフィルタリング（直接指定型）}\label{fig:cfcbf:b}
-\end{subfigure}\\\medskip
-\begin{subfigure}{0.6\linewidth}
-\centering
-\includegraphics[width=\linewidth]{rsyscategory-cf.pdf}\\
-\caption{協調フィルタリング}\label{fig:cfcbf:c}
-\end{subfigure}
+\subcaptionbox{内容ベースフィルタリング（間接指定型）\label{fig:cfcbf:a}}%
+{\includegraphics[width=0.6\linewidth]{rsyscategory-icbf.pdf}}\\\medskip
+\subcaptionbox{内容ベースフィルタリング（直接指定型）\label{fig:cfcbf:b}}%
+{\includegraphics[width=0.6\linewidth]{rsyscategory-dcbf.pdf}}\\\medskip
+\subcaptionbox{協調フィルタリング\label{fig:cfcbf:c}}%
+{\includegraphics[width=0.6\linewidth]{rsyscategory-cf.pdf}}
 \caption{内容ベースフィルタリングと協調フィルタリング}
 \label{fig:cfcbf}
 \end{figure}

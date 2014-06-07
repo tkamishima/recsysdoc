@@ -122,21 +122,12 @@
 %(b) Amazon.com  7     5     8    20    60
 %(c) 寿司        7.9   9.1  22.6  22.7  37.5
 \centering
-\begin{subfigure}{0.6\linewidth}
-\centering
-\includegraphics[width=\linewidth]{rating-score1.pdf}
-\caption{MovieLens \cite{url:008}}\label{fig:prefdist:a}
-\end{subfigure}\\\medskip
-\begin{subfigure}{0.6\linewidth}
-\centering
-\includegraphics[width=\linewidth]{rating-score2.pdf}
-\caption{Amazon.com \cite{misc:007}}\label{fig:prefdist:b}
-\end{subfigure}\\\medskip
-\begin{subfigure}{0.6\linewidth}
-\centering
-\includegraphics[width=\linewidth]{rating-score3.pdf}
-\caption{寿司 \cite{url:020}}\label{fig:prefdist:c}
-\end{subfigure}
+\subcaptionbox{MovieLens \cite{url:008}\label{fig:prefdist:a}}%
+{\includegraphics[width=0.6\linewidth]{rating-score1.pdf}}\\\medskip
+\subcaptionbox{Amazon.com \cite{misc:007}\label{fig:prefdist:b}}%
+{\includegraphics[width=0.6\linewidth]{rating-score2.pdf}}\\\medskip
+\subcaptionbox{寿司 \cite{url:020}\label{fig:prefdist:c}}%
+{\includegraphics[width=0.6\linewidth]{rating-score3.pdf}}
 \caption{アイテムへの評価値の分布}
 \label{fig:prefdist}
 \end{figure}
