@@ -39,22 +39,22 @@ $r_{xy}$ は，評価済みなら評価値の定義域$\calR$のいずれかの�
 活動利用者を添え字 $a$ で表す，すなわち，$r_{ay}$は活動利用者のアイテム$y$への評価値である．
 また，利用者$x$が評価済みのアイテムの集合を$\calY_x=\cbr{y| y\in\calY, r_{xy}\ne\nan}$で表す．
 活動利用者と利用者$i$の類似度は，共通に評価しているアイテムについてのPearson相関で測る．
-\begin{gather}
+\begin{equation}
 \rho_{ax}=
 \frac{\sum_{y\in\calY_{ax}}(r_{ay}-\bar{r}'_a)(r_{xy}-\bar{r}'_x)}%
 {\sqrt{\sum_{y\in\calY_{ax}}(r_{ay}-\bar{r}'_a)^2}\sqrt{\sum_{y\in\calY_{ax}}(r_{xy}-\bar{r}'_x)^2}}
 \label{eq:glsim}
-\end{gather}
+\end{equation}
 ただし，$\calY_{ax}$ は利用者$a$と$x$が共通に評価したアイテムの集合，すなわち，$\calY_{ax}=\calY_a\cap \calY_x$で，
 ${\bar{r}'}_x=\sum_{y\in \mathcal{Y}_{ax}}r_{xy}/|\calY_{ax}|$である．
 なお，$|\calY_{ax}|\le1$，すなわち，活動利用者$a$と標本利用者$x$が共通に評価したアイテムが一つ以下ならば，Pearson相関は
 計算できないので$\rho_{ax}=0$とする．
 アイテム$y\notin\calY_a$の評価値は，式\eqref{eq:glsim}の類似度で重み付けした，各標本利用者のアイテム$y$への評価値の加重平均で予測する．
-\begin{gather}
+\begin{equation}
 \hat{r}_{ay}=
 \bar{r}_a+\frac{\sum_{x\in\calX_{y}}\rho_{ax}(r_{xy}{-}\bar{r}'_x)}{\sum_{x\in\calX_{y}}|\rho_{ax}|}
 \label{eq:glscr}
-\end{gather}
+\end{equation}
 ただし，$\calX_y$はアイテム$j$を評価済みの利用者の集合で，$\bar{r}_{x}$は利用者$x$の全評価アイテムに対する平均評価値 $\bar{r}_x=\sum_{y\in\calY_x}r_{xy}/|\calY_x|$である．
 なお，活動利用者がアイテム$y$を評価済みである$a\in\calX_y$である状況では，そもそも$\hat{r}_{ay}$の推定が不要になるので想定しなくてよい．
 この式の第1項は，第2項が中間的な評価で0をとるので，それを補正するバイアス項である．
