@@ -132,7 +132,7 @@ Leeの方法\cite{icml:01:01}は，\ref{sec:clustermodel}節のクラスタモ�
 \ref{sec:probmodel}節の共起型確率モデルでは，アイテムの特徴などを容易に導入できる柔軟性があると述べた．
 こうした拡張には\cite{uai:01:01,ijcai:05:01,trieice:06:04,tripsj:06:02,tieice:07:02}などがある．
 一例を挙げよう．
-図\ref{fig:latentmodel:a}の利用者$x$とアイテム$y$だけを考慮するモデルに，アイテムの特徴ベクトル$\bff=\paren{f_1,\ldots,f_p}$を
+図\ref{fig:latentmodel:a}の利用者$x$とアイテム$y$だけを考慮するモデルに，アイテムの特徴ベクトル$\bff=\paren{f_1,\dotsc,f_p}$を
 導入する場合を述べる．
 これは式\eqref{eq:plsamodel}に新たな項$\pb{\bff|z}$を追加して行う．
 そして，次の同時確率に対する尤度を最大化することでパラメータは学習できる．
@@ -150,7 +150,7 @@ Leeの方法\cite{icml:01:01}は，\ref{sec:clustermodel}節のクラスタモ�
 \label{fig:combined-topicmodel}
 \end{figure}
 
-文献\cite{trieice:06:04}では，アイテムの特徴$\bff$に加え，利用者の個人属性特徴や，利用意図などの特徴$\bfg=\paren{g_1,\ldots,g_q}$を加えた図\ref{fig:combined-topicmodel}のようなモデルを提案している．
+文献\cite{trieice:06:04}では，アイテムの特徴$\bff$に加え，利用者の個人属性特徴や，利用意図などの特徴$\bfg=\paren{g_1,\dotsc,g_q}$を加えた図\ref{fig:combined-topicmodel}のようなモデルを提案している．
 これをまとめると次式のようになる．
 \begin{multline*}
 \pb{x,y,r,\bff,\bfg} =
