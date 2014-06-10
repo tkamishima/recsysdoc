@@ -123,7 +123,6 @@ FUNCTION {output.nonnull}
           add.period$ write$
 
 	  newline$
-	  "\newblock " write$
 	}
 
 	{ output.state before.all =
@@ -1501,7 +1500,7 @@ FUNCTION {begin.bib}
     'skip$
     { preamble$ write$ newline$ }
   if$
-  "\begin{thebibliography}{"  longest.label  * "}" * write$ newline$
+  "\begin{thebibliography}{}" write$ newline$
 }
 EXECUTE {begin.bib}
 EXECUTE {init.state.consts}
