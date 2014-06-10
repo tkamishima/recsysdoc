@@ -1294,6 +1294,10 @@ FUNCTION {calc.label}
   if$
   duplicate$
   year field.or.null purify$ #-1 #2 substring$
+  duplicate$ empty$
+    { pop$ "" }
+    { " " swap$ * }
+  if$
   *
   'label :=
   year field.or.null purify$ #-1 #4 substring$
