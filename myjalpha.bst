@@ -1206,56 +1206,14 @@ FUNCTION {initialize.et.al.char.used}
 EXECUTE {initialize.et.al.char.used}
 FUNCTION {format.lab.names}
 { 's :=
-  yomi empty$
-     'skip$
-     { yomi 's :=}
-  if$
 
   s  is.kanji.str$
-    { s #1 "{ff}" format.name$ #4 text.prefix$ duplicate$ empty$
-	{pop$ s #1 "{ll}" format.name$ #4 text.prefix$}
+    { s #1 "{ff}" format.name$ duplicate$ empty$
+	{pop$ s #1 "{ll}" format.name$}
 	'skip$
      if$
     }
-    {
-      s num.names$ 'numnames :=
-      numnames #1 >
-	{ numnames #4 >
-	    { #3 'namesleft := }
-	    { numnames 'namesleft := }
-	  if$
-	  #1 'nameptr :=
-	  ""
-	    { namesleft #0 > }
-	    { nameptr numnames =
-		{ s nameptr "{ff }{vv }{ll}{ jj}" format.name$ "others" =
-		    { "{\etalchar{+}}" *
-		      #1 'et.al.char.used :=
-		    }
-		    { s nameptr "{v{}}{l{}}" format.name$ * }
-		  if$
-		}
-		{ s nameptr "{v{}}{l{}}" format.name$ * }
-	      if$
-	      nameptr #1 + 'nameptr :=
-	      namesleft #1 - 'namesleft :=
-	    }
-	  while$
-	  numnames #4 >
-	    { "{\etalchar{+}}" *
-	      #1 'et.al.char.used :=
-	    }
-	    'skip$
-	  if$
-	}
-	{ s #1 "{v{}}{l{}}" format.name$
-	  duplicate$ text.length$ #2 <
-	    { pop$ s #1 "{ll}" format.name$ #3 text.prefix$ }
-	     'skip$
-	  if$
-	}
-      if$
-    }
+    { s #1 "{ll}" format.name$ }
   if$
 
 }
