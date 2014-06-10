@@ -1216,6 +1216,23 @@ FUNCTION {format.lab.names}
   if$
 
 }
+FUNCTION {format.sort.lab.names}
+{ 's :=
+  yomi empty$
+     'skip$
+     { yomi 's :=}
+  if$
+
+  s  is.kanji.str$
+    { s #1 "{ff}" format.name$ duplicate$ empty$
+	{pop$ s #1 "{ll}" format.name$}
+	'skip$
+     if$
+    }
+    { s #1 "{ll}" format.name$ }
+  if$
+
+}
 FUNCTION {author.key.label}
 { author empty$
     { key empty$
@@ -1224,8 +1241,9 @@ FUNCTION {author.key.label}
 
 	{ key #20 text.prefix$ }
       if$
+      duplicate$
     }
-    { author format.lab.names }
+    { author format.sort.lab.names author format.lab.names }
   if$
 }
 FUNCTION {author.editor.key.label}
@@ -1237,11 +1255,12 @@ FUNCTION {author.editor.key.label}
 
 	    { key #20 text.prefix$ }
 	  if$
+	  duplicate$
 	}
-	{ editor format.lab.names }
+	{ editor format.sort.lab.names editor format.lab.names }
       if$
     }
-    { author format.lab.names }
+    { author format.sort.lab.names author format.lab.names }
   if$
 }
 FUNCTION {author.key.organization.label}
@@ -1256,8 +1275,9 @@ FUNCTION {author.key.organization.label}
 	}
 	{ key #20 text.prefix$ }
       if$
+      duplicate$
     }
-    { author format.lab.names }
+    { author format.sort.lab.names author format.lab.names }
   if$
 }
 FUNCTION {editor.key.organization.label}
@@ -1272,8 +1292,9 @@ FUNCTION {editor.key.organization.label}
 	}
 	{ key #20 text.prefix$ }
       if$
+      duplicate$
     }
-    { editor format.lab.names }
+    { editor format.sort.lab.names editor format.lab.names }
   if$
 }
 FUNCTION {calc.label}
@@ -1291,7 +1312,6 @@ FUNCTION {calc.label}
       if$
     }
   if$
-  duplicate$
   year field.or.null purify$ #-1 #2 substring$
   duplicate$ empty$
     { pop$ "" }
