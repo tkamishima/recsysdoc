@@ -1220,9 +1220,9 @@ FUNCTION {author.key.label}
 { author empty$
     { key empty$
 
-	{ cite$ #1 #3 substring$ }
+	{ cite$ #1 #20 substring$ }
 
-	{ key #3 text.prefix$ }
+	{ key #20 text.prefix$ }
       if$
     }
     { author format.lab.names }
@@ -1233,9 +1233,9 @@ FUNCTION {author.editor.key.label}
     { editor empty$
 	{ key empty$
 
-	    { cite$ #1 #3 substring$ }
+	    { cite$ #1 #20 substring$ }
 
-	    { key #3 text.prefix$ }
+	    { key #20 text.prefix$ }
 	  if$
 	}
 	{ editor format.lab.names }
@@ -1249,12 +1249,12 @@ FUNCTION {author.key.organization.label}
     { key empty$
 	{ organization empty$
 
-	    { cite$ #1 #3 substring$ }
+	    { cite$ #1 #20 substring$ }
 
-	    { "The " #4 organization chop.word #3 text.prefix$ }
+	    { "The " #4 organization chop.word #20 text.prefix$ }
 	  if$
 	}
-	{ key #3 text.prefix$ }
+	{ key #20 text.prefix$ }
       if$
     }
     { author format.lab.names }
@@ -1265,12 +1265,12 @@ FUNCTION {editor.key.organization.label}
     { key empty$
 	{ organization empty$
 
-	    { cite$ #1 #3 substring$ }
+	    { cite$ #1 #20 substring$ }
 
-	    { "The " #4 organization chop.word #3 text.prefix$ }
+	    { "The " #4 organization chop.word #20 text.prefix$ }
 	  if$
 	}
-	{ key #3 text.prefix$ }
+	{ key #20 text.prefix$ }
       if$
     }
     { editor format.lab.names }
