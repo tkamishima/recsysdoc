@@ -1,5 +1,5 @@
 %!TEX encoding = UTF-8 Unicode
-\documentclass[oneside]{jsbook}
+\documentclass{jsbook}
 
 % file encdong
 \usepackage[utf8]{inputenc}
@@ -24,10 +24,10 @@
 \usepackage[dvipdfmx]{graphicx}
 \graphicspath{{Fig/}}
 
-% set pagesize: A4paper, margin=3cm, mag=1200=12pt
+% set pagesize: A4paper, margin=3cm, mag=1200=12pt, (twoside=false == oneside)
 \usepackage{geometry}
 \geometry{%
-a4paper, truedimen, mag=1200,
+truedimen, a4paper, mag=1200, twoside=false,
 hmargin={3truecm, 3truecm}, vmargin=3truecm,
 includehead, ignorefoot, headsep=\baselineskip, headheight=\baselineskip
 }
