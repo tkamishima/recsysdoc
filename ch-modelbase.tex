@@ -77,7 +77,7 @@ $\bfu_x$の要素を説明変数と，$\bfv_y$の要素をパラメータとみ�
 %すると，式\eqref{eq:factormodel}で，$X$の列ベクトルは$K$個の因子で
 %記述した利用者を，$Y$の列ベクトルはアイテムの$K$個の因子への関連性
 %を表したものと解釈できる．
-この方法では，残差$\paren{\bfR-\bfU^\T\bfV}$の各要素が正規分布に従うとしてモデル化し，観測された評価値の生成確率が高くなるように$\bfU$と$\bfV$を計算する．
+この方法では，残差$\prn{\bfR-\bfU^\T\bfV}$の各要素が正規分布に従うとしてモデル化し，観測された評価値の生成確率が高くなるように$\bfU$と$\bfV$を計算する．
 この行列分解手法を\term{因子分析}{factor analysis}という．
 分解ができれば，任意の利用者の任意アイテムに対する推定評価値$\hat{r}_{xy}=\bfu_x^\T \bfv_y$が計算できる．
 しかし，実際の$\bfR$には欠損値があるので，文献\cite{sigir:02:01}では，これらの欠損値を潜在変数とみなしてEMアルゴリズム\cite{jrss:77:01}\index{EMアルゴリズム}\index{EM algorithm}を適用して解いている．
@@ -121,7 +121,7 @@ $\bfu_x$の要素を説明変数と，$\bfv_y$の要素をパラメータとみ�
 利用者$x$のアイテム$y$の評価値を予測するとき，逐次型二項関係学習法では，アイテム$y$への他の利用者の評価と，利用者$x$のその他のアイテムへの評価を入力とした次の関数を用いる
 \begin{equation}
 \hat{r}_{xy}=\arg\max_{r\in \calR}
-\paren{\sum_{i\st r_{iy}=r}v_{xi}+\sum_{j\st r_{xj}=r}w_{yj}}
+\prn{\sum_{i\st r_{iy}=r}v_{xi}+\sum_{j\st r_{xj}=r}w_{yj}}
 \label{eq:cglr}
 \end{equation}
 利用者$x$が仮にアイテム$y$の評価値を$r$としたとき，
@@ -242,7 +242,7 @@ $\bfu_x$の要素を説明変数と，$\bfv_y$の要素をパラメータとみ�
 また，この図にはないが，値が確定しているパラメータは黒い点で表し，同じ確率変数を複数回サンプリングすることを示すプレートという表現もある．
 これらの表現については教科書\cite[8章]{jpublist:077x}などを参考にされたい．
 
-モデルのパラメータは$\bfTheta = \paren{\cbr{\pb{x|z}}, \cbr{\pb{y|z}},\cbr{\pb{z}}}$であるが，これらを最尤推定で求める．
+モデルのパラメータは$\bfTheta = \prn{\cbr{\pb{x|z}}, \cbr{\pb{y|z}},\cbr{\pb{z}}}$であるが，これらを最尤推定で求める．
 すなわち，いろいろな利用者がいろいろなアイテムを評価した，$N$個のデータ$\calD=\cbr{(x_i,y_i)}_{i=1}^N$に対する次の対数尤度を最大にするように求める．
 \[
 \pb{\calD; \bfTheta} = \sum_{(x,y)\in \calD} \ln\pb{X=x, Y=y; \bfTheta}
@@ -257,7 +257,7 @@ $\bfu_x$の要素を説明変数と，$\bfv_y$の要素をパラメータとみ�
 \end{equation}
 二つ目のMステップでは，前のステップで求めた分布$\pb{z|x,y}$を用いてパラメータを更新する．
 \begin{align}
-\pb{x|z} & = \frac{\sum_y n\paren{x,y} \pb{z|x,y}}{\sum_{x',y}n(x',y)\pb{z|x',y}}\label{eq:mstepx}\\
+\pb{x|z} & = \frac{\sum_y n\prn{x,y} \pb{z|x,y}}{\sum_{x',y}n(x',y)\pb{z|x',y}}\label{eq:mstepx}\\
 \pb{y|z} & = \frac{\sum_x n(x,y) \pb{z|x,y}}{\sum_{x,y'} n(x,y') \pb{z|x,y'}}\label{eq:mstepy}\\
 \pb{z} &=\frac{\sum_{x,y}n(x,y)\pb{z|x,y}}{N}\label{eq:mstepz}
 \end{align}
@@ -368,11 +368,11 @@ pLSAでは新規の利用者に対応できない問題があったが，これ�
 \begin{equation}
 \pb{y^{(t+1)}|\ang{Y^{(t)}}}=
 \frac{1}{Z}
-\exp\bra{\sum_{k=1}^K\lambda_k f_k\paren{y^{(t+1)},\ang{Y^{(t)}}}}
+\exp\bra{\sum_{k=1}^K\lambda_k f_k\prn{y^{(t+1)},\ang{Y^{(t)}}}}
 \label{eq:maxent}
 \end{equation}
 ただし，$Z$は正規化定数，$\lambda_k$は重みパラメータである．
-ここで\term{素性関数}{feature function} $f_k\paren{y^{(t+1)},\ang{Y^{(t)}}}$が重要になる．
+ここで\term{素性関数}{feature function} $f_k\prn{y^{(t+1)},\ang{Y^{(t)}}}$が重要になる．
 素性関数は購入履歴$\ang{Y^{(t)}}$にある特徴があるとき，次回に購入するアイテムがある特定のものになるなら$1$をとり，それ以外
 では$0$となるような関数である．
 例えば，上記のドラマの場合，購入履歴にドラマの第2回が含まれていて，次回購入がドラマの第3回なら$1$になる関数である．
@@ -414,7 +414,7 @@ $\pb{y^{(t+1)}=y'|y\in \ang{Y^{(t)}}}$と$\pb{y^{(t+1)}=y'}$との差が大き�
 この時刻$t$での行動$A^{(t)}$は図中\ajMaru{2}にあたり，アイテム$C$を推薦した．
 利用者は$\ang{Y^{(t)}}$と$A^{(t)}$に依存して，アイテム$y^{(t+1)}$を選択し，次の状態$\ang{Y^{(t+1)}}$に遷移する．
 図の例では，推薦を受け入れず利用者は\ajMaru{3}でアイテムDを購入したので，遷移した状態は\textcircled{\small 4}の$\ang{Y^{(t+1)}}=\ang{B,D}$となった．
-この状態遷移を$\paren{\ang{Y^{(t)}},A^{(t)},\ang{Y^{(t+1)}}}$と，この遷移確率を$\Pr_\mathrm{MDP}\bra{\ang{Y^{(t)}},A^{(t)},\ang{Y^{(t+1)}}}$と記す．
+この状態遷移を$\prn{\ang{Y^{(t)}},A^{(t)},\ang{Y^{(t+1)}}}$と，この遷移確率を$\Pr_\mathrm{MDP}\bra{\ang{Y^{(t)}},A^{(t)},\ang{Y^{(t+1)}}}$と記す．
 また，状態$\ang{Y^{(t)}}$で行動$A^{(t)}$を決定する手続きを方策 (policy) と呼ぶ．
 さらに，図の\ajMaru{3}にてアイテムDを選択したが，これに依存して報酬 (reward) が発生する．
 この報酬は，アイテムへの代金や，利用者のアイテムへの評価値などである．
@@ -444,13 +444,13 @@ $\pb{y^{(t+1)}=y'|y\in \ang{Y^{(t)}}}$と$\pb{y^{(t+1)}=y'}$との差が大き�
 \]
 利用者$x$がアイテム${y'}^{(t)}$を選択したとき解約しない確率が$\pb{e|x,{y'}^{(t)}}$で，$y^{(t)}$を推薦したときに${y'}^{(t)}$を選
 択する確率が$\pb{{y'}^{(t)}|x,y^{(t)}}$である．
-前者の確率は，\term{ハザード関数}{hazard function} $h\paren{T|\ang{Y^{(t)}}}$で表す．
+前者の確率は，\term{ハザード関数}{hazard function} $h\prn{T|\ang{Y^{(t)}}}$で表す．
 これは購入履歴が$\ang{Y^{(t)}}=\ang{y^{(1)},\dotsc,y^{(t)}}$である利用者のうち，期間$T$まで契約を継続し，かつ，この時点で契約をやめる割合を示す．
 この関数は生存時間分析 (survival analysis) の\term{Cox比例ハザードモデル}{Cox proportional hazards model}でモデル化する．
 $\ang{Y^{(t-1)}}$のあとに${y'}^{(t)}$を購入した系列を$\ang{Y^{(t-1)},{y'}^{(t)}}$で表すと$\pb{e|x,{y'}^{(t)}}$は，適当な仮定の下，次式となる．
 \[
 \pb{e|x,{y'}^{(t)}}=
-\frac{h(T|\ang{Y^{(t-1)}})}{h\paren{T|\ang{Y^{(t-1)}}}+h\paren{T|\ang{Y^{(t-1)},{y'}^{(t)}}}}
+\frac{h(T|\ang{Y^{(t-1)}})}{h\prn{T|\ang{Y^{(t-1)}}}+h\prn{T|\ang{Y^{(t-1)},{y'}^{(t)}}}}
 \]
 一方の$\pb{{y'}^{(t)}|x,y^{(t)}}$は，アイテムを推薦することにより選択確率が定数倍されると仮定して，利用者$x$の選択確率$\pb{{y'}^{(t)}|x}$から求める．
 この$\pb{{y'}^{(t)}|x}$は，購入履歴に基づく素性関数を用いた最大エントロピーモデルでモデル化する．
