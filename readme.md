@@ -32,4 +32,4 @@ UTF-8 で符号化した日本語ファイルをコンパイルできる pLaTeX 
     platex main
     platex main
     platex main
-    dvipdfmx -p a4 -o fadmdoc.pdf main
+    dvipdfmx -p a4 -o recsysdoc.pdf main
