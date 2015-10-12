@@ -122,11 +122,11 @@
 %(b) Amazon.com  7     5     8    20    60
 %(c) 寿司        7.9   9.1  22.6  22.7  37.5
 \centering
-\subcaptionbox{MovieLens \cite{url:008}\label{fig:prefdist:a}}%
+\subcaptionbox{MovieLens \cite{misc:129}\label{fig:prefdist:a}}%
 {\includegraphics[width=0.6\linewidth]{rating-score1.pdf}}\\\medskip
 \subcaptionbox{Amazon.com \cite{misc:007}\label{fig:prefdist:b}}%
 {\includegraphics[width=0.6\linewidth]{rating-score2.pdf}}\\\medskip
-\subcaptionbox{寿司 \cite{url:020}\label{fig:prefdist:c}}%
+\subcaptionbox{寿司 \cite{misc:140}\label{fig:prefdist:c}}%
 {\includegraphics[width=0.6\linewidth]{rating-score3.pdf}}
 \caption{アイテムへの評価値の分布}
 \label{fig:prefdist}
@@ -134,7 +134,7 @@
 
 次に，評価値の偏りについて述べる．
 図\ref{fig:prefdist}に，5段階の採点法を用いた3種類の嗜好データの，評価値の分布を示す．
-それぞれ，\subref{fig:prefdist:a}~MovieLensの100万要素のデータ集合\cite{url:008}，\subref{fig:prefdist:b}~電子商取引サイトAmazon.com\cite{misc:007}，\subref{fig:prefdist:c}~寿司の嗜好調査\cite{url:020,epublist:064}での分布である．
+それぞれ，\subref{fig:prefdist:a}~MovieLensの100万要素のデータ集合\cite{misc:129}，\subref{fig:prefdist:b}~電子商取引サイトAmazon.com\cite{misc:007}，\subref{fig:prefdist:c}~寿司の嗜好調査\cite{misc:140,epublist:064}での分布である．
 どのデータでも，『好き』の方へ明らかに偏っている．
 この偏りの原因には，サンプリングと真の嗜好からの乖離の二つが考えられる.
 サンプリングの偏りの原因として，図\ref{fig:prefdist:a}や\subref{fig:prefdist:b}では，利用者が，関心がある選択的にアイテムを評価していることや，図\ref{fig:prefdist:b}や\subref{fig:prefdist:c}では，市場の淘汰を受けて人気のあるアイテムのみが評価候補となっていることが挙げられる．
