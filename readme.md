@@ -21,6 +21,7 @@
 * <http://www.kamishima.net/asset/jbib.bib>
 * <http://www.kamishima.net/asset/jmisc.bib>
 * <http://www.kamishima.net/asset/jpublist.bib>
+* <http://www.kamishima.net/asset/mybook.bib>
 * <http://www.kamishima.net/asset/mathsymbols.sty>
 
 UTF-8 で符号化した日本語ファイルをコンパイルできる pLaTeX 環境にて，以下のコマンドでコンパイルできます::
